@@ -21,7 +21,6 @@ export default function UpdatingPage() {
 
       <p className="text-gray-500 mt-3 mb-6 text-sm">
         Or open <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono">package.json</code> and
-<<<<<<< HEAD
         look for <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono">&quot;@mnee-ui/ui&quot;</code> in
         the <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono">dependencies</code> section.
       </p>
