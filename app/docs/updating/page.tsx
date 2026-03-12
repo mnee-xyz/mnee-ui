@@ -21,7 +21,7 @@ export default function UpdatingPage() {
 
       <p className="text-gray-500 mt-3 mb-6 text-sm">
         Or open <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono">package.json</code> and
-        look for <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono">"@mnee-ui/ui"</code> in
+        look for <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono">&quot;@mnee-ui/ui&quot;</code> in
         the <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono">dependencies</code> section.
       </p>
 
@@ -94,7 +94,7 @@ export default function UpdatingPage() {
       <h3 className="text-base font-semibold text-gray-900 mb-2">2. Bump the version</h3>
       <p className="text-gray-500 mb-3 text-sm">
         Edit <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono">package.json</code> and
-        increment <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono">"version"</code> following
+        increment <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono">&quot;version&quot;</code> following
         semver. Or use npm&apos;s built-in version command:
       </p>
       <CodeBlock
@@ -114,7 +114,7 @@ npm version major   # 0.0.2 → 1.0.0  (breaking change)`}
 
       <p className="text-gray-500 mt-3 mb-8 text-sm">
         npm will package only the files listed under{" "}
-        <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono">"files"</code> in{" "}
+        <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono">&quot;files&quot;</code> in{" "}
         <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono">package.json</code>:
         the <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono">dist/</code> folder
         and <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono">components/ui/mnee-ui.css</code>.

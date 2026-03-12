@@ -1,14 +1,22 @@
 {
   "name": "@mnee-ui/ui",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "MNEE Design System — components and documentation",
   "license": "MIT",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/components/ui/index.d.ts",
   "exports": {
-    ".": "./components/ui/index.ts",
+    ".": {
+      "types": "./dist/components/ui/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
     "./styles": "./components/ui/mnee-ui.css"
   },
   "files": [
-    "components/ui/"
+    "dist/",
+    "components/ui/mnee-ui.css"
   ],
   "publishConfig": {
     "access": "public"
@@ -18,6 +26,7 @@
     "tailwindcss": ">=3"
   },
   "scripts": {
+    "build:lib": "tsup && tsc --project tsconfig.lib.json",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -47,6 +56,7 @@
     "eslint": "^9",
     "eslint-config-next": "^15.5.12",
     "tailwindcss": "^4",
+    "tsup": "^8.5.1",
     "typescript": "^5"
   }
 }

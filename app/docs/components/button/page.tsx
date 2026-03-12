@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { ComponentPreview } from "@/components/site/ComponentPreview";
 import { CodeBlock } from "@/components/site/CodeBlock";
 import { ComponentStatus } from "@/components/site/ComponentStatus";
+import { Star, Download, Trash2 } from "lucide-react";
 
 const snippets = {
   variants: `<Button variant="primary">Primary</Button>
@@ -13,6 +14,10 @@ const snippets = {
   sizes: `<Button size="sm">Small</Button>
 <Button size="md">Medium</Button>
 <Button size="lg">Large</Button>`,
+
+  withIcon: `<Button variant="primary"><Star size={14} />Publish</Button>
+<Button variant="outline"><Download size={14} />Export</Button>
+<Button variant="ghost"><Trash2 size={14} />Delete</Button>`,
 
   states: `<Button loading>Saving...</Button>
 <Button disabled>Disabled</Button>`,
@@ -50,6 +55,14 @@ export default function ButtonPage() {
         <Button size="sm">Small</Button>
         <Button size="md">Medium</Button>
         <Button size="lg">Large</Button>
+      </ComponentPreview>
+
+      {/* With icon */}
+      <h2 className="text-lg font-semibold text-gray-900 mb-3">With icon</h2>
+      <ComponentPreview code={snippets.withIcon} className="mb-8">
+        <Button variant="primary"><Star size={14} />Publish</Button>
+        <Button variant="outline"><Download size={14} />Export</Button>
+        <Button variant="ghost"><Trash2 size={14} />Delete</Button>
       </ComponentPreview>
 
       {/* States */}

@@ -79,33 +79,3 @@ figma.connect(Button, FIGMA_URL, {
     },
   ],
 });
-
-// ─── 3. Icon-only button ──────────────────────────────────────────────────────
-// Note: Secondary variant is missing from this component set in Figma.
-// Federico should add it to the icon button component set.
-figma.connect(
-  Button,
-  "https://www.figma.com/design/qzjrgEgx4q7MAU9ypgwp48?node-id=3364-200",
-  {
-    props: {
-      variant: figma.enum("Type", {
-        Primary: "primary",
-        Destructive: "destructive",
-        Ghost: "ghost",
-        Outline: "outline",
-      }),
-      loading: figma.boolean("is Loading"),
-      icon: figma.instance("icon"),
-      disabled: figma.enum("State", {
-        Disable: true,
-        Default: undefined,
-        Hover: undefined,
-      }),
-    },
-    example: ({ variant, loading, icon, disabled }) => (
-      <Button variant={variant} loading={loading} disabled={disabled}>
-        {icon}
-      </Button>
-    ),
-  }
-);
