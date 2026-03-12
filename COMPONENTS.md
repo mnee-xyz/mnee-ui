@@ -1,7 +1,7 @@
 # MNEE UI — Component Inventory
 
 > Source of truth: `merchant-portal-frontend/src/components/`
-> Design system package: `@mnee/ui`
+> Design system package: `@mnee-ui/ui`
 
 ---
 

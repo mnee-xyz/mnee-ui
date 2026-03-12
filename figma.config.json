@@ -1,0 +1,10 @@
+{
+  "codeConnect": {
+    "parser": "react",
+    "include": ["figma/**/*.figma.tsx"],
+    "exclude": ["node_modules/**", ".next/**"],
+    "importPaths": {
+      "components/ui/*": "@mnee-ui/ui"
+    }
+  }
+}

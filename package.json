@@ -1,11 +1,17 @@
 {
-  "name": "@mnee/ui",
+  "name": "@mnee-ui/ui",
   "version": "0.0.1",
   "description": "MNEE Design System — components and documentation",
   "license": "MIT",
   "exports": {
     ".": "./components/ui/index.ts",
     "./styles": "./components/ui/mnee-ui.css"
+  },
+  "files": [
+    "components/ui/"
+  ],
+  "publishConfig": {
+    "access": "public"
   },
   "peerDependencies": {
     "react": ">=18",
@@ -15,7 +21,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "figma:parse": "npx figma connect parse --dry-run",
+    "figma:publish": "npx figma connect publish"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
@@ -23,20 +31,21 @@
     "@next/mdx": "^16.1.6",
     "clsx": "^2.1.1",
     "lucide-react": "^0.575.0",
-    "next": "15.2.4",
-    "react": "^19.0.0",
+    "next": "^15.5.12",
+    "react": ">=18",
     "react-dom": "^19.0.0",
     "shiki": "^3.23.0",
     "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@figma/code-connect": "^1.4.1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "15.2.4",
+    "eslint-config-next": "^15.5.12",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

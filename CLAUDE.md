@@ -2,12 +2,12 @@
 
 ## Purpose
 This is the MNEE design system owned by the UX Design team (Federico, Head of UX).
-Components are pre-built here and consumed by the product via `npm install @mnee/ui`.
+Components are pre-built here and consumed by the product via `npm install @mnee-ui/ui`.
 The source of truth for which components to port is: `/Users/fostan/merchant-portal-frontend`
 (repo: MERCHANT-PORTAL-FRONTEND). Workflow: identify components in the product repo → port them here → document.
 
 ## Dual-purpose repo
-- `components/ui/` — the published npm package (`@mnee/ui`)
+- `components/ui/` — the published npm package (`@mnee-ui/ui`)
 - `app/docs/` — the Next.js documentation website (component playground + MDX docs)
 
 ## Commands
