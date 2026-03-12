@@ -1,0 +1,12 @@
+# Docs site — not needed in the published npm package
+app/
+components/site/
+mdx-components.tsx
+next.config.ts
+postcss.config.mjs
+eslint.config.mjs
+.github/
+figma/
+public/
+.next/
+node_modules/

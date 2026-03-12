@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+/* ── Design Tokens ──────────────────────────────────── */
+/* Extracted from merchant-portal-frontend visual patterns */
+
+@theme {
+  /* Brand — amber, from bg-[#D97706] throughout the portal */
+  --color-brand:          #D97706;
+  --color-brand-dark:     #B45309;
+
+  /* Success — from bg-[#15803D] (COMPLETED status) */
+  --color-success:        #15803D;
+  --color-success-bg:     #DCFCE7;
+  --color-success-fg:     #14532D;
+
+  /* Warning — amber, from bg-[#D97706] (PENDING status) */
+  --color-warning:        #D97706;
+  --color-warning-bg:     #FEF3C7;
+  --color-warning-fg:     #92400E;
+
+  /* Error — from bg-red-600/bg-red-100 (FAILED status) */
+  --color-error:          #B91C1C;
+  --color-error-bg:       #FEE2E2;
+  --color-error-fg:       #991B1B;
+
+  /* Info — blue */
+  --color-info:           #1D4ED8;
+  --color-info-bg:        #DBEAFE;
+  --color-info-fg:        #1E3A8A;
+
+  /* Surface */
+  --color-surface:        #ffffff;
+  --color-surface-border: #E5E5E5;
+  --color-muted:          #6B7280;
+  --color-muted-bg:       #F9FAFB;
+
+  /* Typography */
+  --font-sans: var(--font-inter, "Inter"), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono, "Geist Mono"), ui-monospace, "SFMono-Regular", monospace;
+}
+
+/* ── Base ──────────────────────────────────────────── */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* ── Toast animations ──────────────────────────────── */
+@keyframes slideInToast {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideOutToast {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(40px); }
+}

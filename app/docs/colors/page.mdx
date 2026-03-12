@@ -1,0 +1,99 @@
+# Token Reference
+
+Design tokens are defined as CSS custom properties in `components/ui/mnee-ui.css` using Tailwind v4's `@theme` block. They are exported from the npm package — engineers import them, not define them.
+
+Each token is automatically available as a Tailwind utility anywhere the package styles are loaded.
+
+## Brand
+
+The MNEE amber brand color, extracted from the merchant portal.
+
+| Token | CSS Variable | Hex | Utility |
+|---|---|---|---|
+| Brand | `--color-brand` | `#D97706` | `bg-brand` / `text-brand` |
+| Brand Dark | `--color-brand-dark` | `#B45309` | `bg-brand-dark` / `text-brand-dark` |
+
+## Semantic Colors
+
+Semantic tokens communicate meaning — success, warning, error, info. Each has three variants: a solid foreground, a light background, and a dark foreground for text on that background.
+
+### Success
+Used for: `COMPLETED` and `VERIFIED` transaction statuses.
+
+| Token | CSS Variable | Hex | Utility |
+|---|---|---|---|
+| success | `--color-success` | `#15803D` | `bg-success` |
+| success-bg | `--color-success-bg` | `#DCFCE7` | `bg-success-bg` |
+| success-fg | `--color-success-fg` | `#14532D` | `text-success-fg` |
+
+### Warning
+Used for: `PENDING` transaction status.
+
+| Token | CSS Variable | Hex | Utility |
+|---|---|---|---|
+| warning | `--color-warning` | `#D97706` | `bg-warning` |
+| warning-bg | `--color-warning-bg` | `#FEF3C7` | `bg-warning-bg` |
+| warning-fg | `--color-warning-fg` | `#92400E` | `text-warning-fg` |
+
+### Error
+Used for: `FAILED` and `PAYOUT_FAILED` transaction statuses.
+
+| Token | CSS Variable | Hex | Utility |
+|---|---|---|---|
+| error | `--color-error` | `#B91C1C` | `bg-error` |
+| error-bg | `--color-error-bg` | `#FEE2E2` | `bg-error-bg` |
+| error-fg | `--color-error-fg` | `#991B1B` | `text-error-fg` |
+
+### Info
+
+| Token | CSS Variable | Hex | Utility |
+|---|---|---|---|
+| info | `--color-info` | `#1D4ED8` | `bg-info` |
+| info-bg | `--color-info-bg` | `#DBEAFE` | `bg-info-bg` |
+| info-fg | `--color-info-fg` | `#1E3A8A` | `text-info-fg` |
+
+## Surface
+
+| Token | CSS Variable | Hex | Utility |
+|---|---|---|---|
+| surface | `--color-surface` | `#ffffff` | `bg-surface` |
+| surface-border | `--color-surface-border` | `#E5E5E5` | `border-surface-border` |
+| muted | `--color-muted` | `#6B7280` | `text-muted` |
+| muted-bg | `--color-muted-bg` | `#F9FAFB` | `bg-muted-bg` |
+
+## Typography
+
+Font tokens set the typefaces for the design system. They are available as Tailwind `font-sans` and `font-mono` utilities.
+
+| Token | CSS Variable | Value | Utility |
+|---|---|---|---|
+| Sans | `--font-sans` | `"Inter", system-ui, -apple-system, sans-serif` | `font-sans` |
+| Mono | `--font-mono` | `"Geist Mono", ui-monospace, "SFMono-Regular", monospace` | `font-mono` |
+
+The tokens define *which* fonts to use — consumers are responsible for *loading* the font files (e.g. via `next/font`, a `<link>` tag, or `@font-face`). The fallback chain ensures things render correctly even without loading Inter explicitly.
+
+```css
+/* Already included via @import "@mnee/ui/styles" */
+@theme {
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", monospace;
+}
+```
+
+```tsx
+// Use Tailwind utilities — they resolve to the design system fonts
+<p className="font-sans">Body text in Inter</p>
+<code className="font-mono">Code in Geist Mono</code>
+```
+
+## Usage in components
+
+Tokens are consumed internally by components — you should not need to reference them directly in product code. Use a component's `variant` prop instead.
+
+```tsx
+// Use the component API
+<Badge variant="success">Completed</Badge>
+
+// Tokens are for component authors, not product engineers
+<span className="bg-success text-white">Completed</span>
+```

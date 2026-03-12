@@ -1,0 +1,35 @@
+@theme {
+  /* Brand — amber */
+  --color-brand:          #D97706;
+  --color-brand-dark:     #B45309;
+
+  /* Success */
+  --color-success:        #15803D;
+  --color-success-bg:     #DCFCE7;
+  --color-success-fg:     #14532D;
+
+  /* Warning */
+  --color-warning:        #D97706;
+  --color-warning-bg:     #FEF3C7;
+  --color-warning-fg:     #92400E;
+
+  /* Error */
+  --color-error:          #B91C1C;
+  --color-error-bg:       #FEE2E2;
+  --color-error-fg:       #991B1B;
+
+  /* Info */
+  --color-info:           #1D4ED8;
+  --color-info-bg:        #DBEAFE;
+  --color-info-fg:        #1E3A8A;
+
+  /* Surface */
+  --color-surface:        #ffffff;
+  --color-surface-border: #E5E5E5;
+  --color-muted:          #6B7280;
+  --color-muted-bg:       #F9FAFB;
+
+  /* Typography */
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", monospace;
+}

@@ -1,0 +1,68 @@
+# Introduction
+
+MNEE UI is the official component library for the MNEE ecosystem. It enforces the visual language of the merchant portal — colors, typography, spacing, and states are owned by the design team and delivered as finished, unchangeable parts.
+
+Engineers compose components and wire up data. The design system controls every pixel.
+
+## Installation
+
+```bash
+npm install @mnee/ui
+```
+
+Then add one line to your project's `globals.css`:
+
+```css
+@import "tailwindcss";
+@import "@mnee/ui/styles";
+```
+
+That's it. All design tokens are loaded from the package — you do not define or modify them.
+
+## Usage
+
+```tsx
+import { Button, Badge, Card, CardHeader, CardTitle, CardContent } from "@mnee/ui"
+
+export function Example() {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Payment received</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <Badge variant="success">Completed</Badge>
+        <Button variant="primary">View details</Button>
+      </CardContent>
+    </Card>
+  )
+}
+```
+
+## The `className` contract
+
+All components accept a `className` prop for **layout utilities only** — margin, padding, width, flex, grid. It is not for overriding colors, typography, or state styles.
+
+```tsx
+// ✅ Layout — correct use
+<Button className="mt-4 w-full">Submit</Button>
+
+// ❌ Style override — do not do this
+<Button className="bg-purple-900 text-red-500">Submit</Button>
+```
+
+Color, typography, and spacing inside components are set by the design system and are not overridable via `className`.
+
+## Requirements
+
+- React 18+
+- Tailwind CSS v4 (with `@theme` token support)
+- `clsx` and `tailwind-merge` (included as dependencies)
+
+## Principles
+
+**Design-owned** — Colors, typography, and spacing are set by the design team. Engineers compose components, not style them.
+
+**Semantic over literal** — Components use design tokens (`bg-brand`, `text-success-fg`) rather than hardcoded hex values. Change a token once, update everywhere.
+
+**Merchant portal parity** — Every component is visually identical to its counterpart in the portal. There is no design drift between the library and the product.
