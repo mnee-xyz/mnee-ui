@@ -4,29 +4,42 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
-const navigation = [
+type Status = "stable" | "in-progress" | "deprecated";
+
+const dotColor: Record<Status, string> = {
+  stable: "bg-green-500",
+  "in-progress": "bg-amber-400",
+  deprecated: "bg-red-500",
+};
+
+const navigation: Array<{
+  section: string;
+  items: Array<{ label: string; href: string; status?: Status }>;
+}> = [
   {
     section: "Getting Started",
     items: [
       { label: "Introduction", href: "/docs/introduction" },
       { label: "Token Reference", href: "/docs/colors" },
+      { label: "Updating", href: "/docs/updating" },
     ],
   },
   {
     section: "Components",
     items: [
-      { label: "Button", href: "/docs/components/button" },
-      { label: "Badge", href: "/docs/components/badge" },
-      { label: "Card", href: "/docs/components/card" },
-      { label: "Input", href: "/docs/components/input" },
-      { label: "Toast", href: "/docs/components/toast" },
-      { label: "Icons", href: "/docs/components/icons" },
-      { label: "Banner", href: "/docs/components/banner" },
-      { label: "Table", href: "/docs/components/table" },
-      { label: "Drawer", href: "/docs/components/drawer" },
-      { label: "Modal", href: "/docs/components/modal" },
-      { label: "Alert", href: "/docs/components/alert" },
-      { label: "CodeBlock", href: "/docs/components/code-block" },
+      { label: "Button", href: "/docs/components/button", status: "stable" as const },
+      { label: "Button Icon", href: "/docs/components/button-icon", status: "in-progress" as const },
+      { label: "Badge", href: "/docs/components/badge", status: "in-progress" as const },
+      { label: "Card", href: "/docs/components/card", status: "in-progress" as const },
+      { label: "Input", href: "/docs/components/input", status: "in-progress" as const },
+      { label: "Toast", href: "/docs/components/toast", status: "in-progress" as const },
+      { label: "Icons", href: "/docs/components/icons", status: "in-progress" as const },
+      { label: "Banner", href: "/docs/components/banner", status: "in-progress" as const },
+      { label: "Table", href: "/docs/components/table", status: "in-progress" as const },
+      { label: "Drawer", href: "/docs/components/drawer", status: "in-progress" as const },
+      { label: "Modal", href: "/docs/components/modal", status: "in-progress" as const },
+      { label: "Alert", href: "/docs/components/alert", status: "in-progress" as const },
+      { label: "CodeBlock", href: "/docs/components/code-block", status: "in-progress" as const },
     ],
   },
   {
@@ -63,7 +76,12 @@ export function Sidebar() {
                           : "text-gray-500 hover:text-gray-900 hover:bg-gray-50"
                       )}
                     >
-                      {item.label}
+                      <span className="flex items-center justify-between">
+                        {item.label}
+                        {item.status && (
+                          <span className={`w-1.5 h-1.5 rounded-full ${dotColor[item.status]}`} />
+                        )}
+                      </span>
                     </Link>
                   </li>
                 );

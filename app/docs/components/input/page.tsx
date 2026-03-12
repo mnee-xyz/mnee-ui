@@ -2,6 +2,7 @@ import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { ComponentPreview } from "@/components/site/ComponentPreview";
 import { CodeBlock } from "@/components/site/CodeBlock";
+import { ComponentStatus } from "@/components/site/ComponentStatus";
 
 const snippets = {
   default: `<Input placeholder="Enter value..." />`,
@@ -34,14 +35,17 @@ const snippets = {
 
   required: `<Input label="Full name" required placeholder="Jane Doe" />`,
 
-  install: `import { Input } from "@mnee/ui"`,
+  install: `import { Input } from "@mnee-ui/ui"`,
 };
 
 export default function InputPage() {
   return (
     <div>
       <p className="text-xs font-mono text-gray-400 mb-2">Components</p>
-      <h1 className="text-3xl font-bold text-gray-900 mb-3 tracking-tight">Input</h1>
+      <div className="flex items-center gap-2.5 mb-3">
+        <h1 className="text-3xl font-bold text-gray-900 tracking-tight">Input</h1>
+        <ComponentStatus status="in-progress" />
+      </div>
       <p className="text-gray-500 mb-6 leading-relaxed">
         Base text input with optional label, hint, and error states. Extends all
         native <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono">input</code> HTML attributes.

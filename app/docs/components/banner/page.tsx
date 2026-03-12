@@ -2,6 +2,7 @@ import { Banner } from "@/components/ui/banner";
 import { Button } from "@/components/ui/button";
 import { ComponentPreview } from "@/components/site/ComponentPreview";
 import { CodeBlock } from "@/components/site/CodeBlock";
+import { ComponentStatus } from "@/components/site/ComponentStatus";
 
 const snippets = {
   gradient: `<Banner
@@ -22,14 +23,17 @@ const snippets = {
   action={<Button size="sm">Learn more</Button>}
 />`,
 
-  install: `import { Banner } from "@mnee/ui"`,
+  install: `import { Banner } from "@mnee-ui/ui"`,
 };
 
 export default function BannerPage() {
   return (
     <div>
       <p className="text-xs font-mono text-gray-400 mb-2">Components</p>
-      <h1 className="text-3xl font-bold text-gray-900 mb-3 tracking-tight">Banner</h1>
+      <div className="flex items-center gap-2.5 mb-3">
+        <h1 className="text-3xl font-bold text-gray-900 tracking-tight">Banner</h1>
+        <ComponentStatus status="in-progress" />
+      </div>
       <p className="text-gray-500 mb-8 leading-relaxed">
         Informational strip for announcements, status messages, or promotions.
         The <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono">gradient</code> variant

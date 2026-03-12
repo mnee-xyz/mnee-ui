@@ -1,13 +1,14 @@
 import { ComponentPreview } from "@/components/site/ComponentPreview";
 import { CodeBlock as SiteCodeBlock } from "@/components/site/CodeBlock";
 import { CodeBlock } from "@/components/ui/code-block";
+import { ComponentStatus } from "@/components/site/ComponentStatus";
 
 const snippets = {
-  basic: `<CodeBlock code="npm install @mnee/ui" />`,
+  basic: `<CodeBlock code="npm install @mnee-ui/ui" />`,
 
   withTitle: `<CodeBlock
   title="Install the package"
-  code="npm install @mnee/ui"
+  code="npm install @mnee-ui/ui"
 />`,
 
   javascript: `<CodeBlock
@@ -22,7 +23,7 @@ const snippets = {
 }\`}
 />`,
 
-  install: `import { CodeBlock } from "@mnee/ui"`,
+  install: `import { CodeBlock } from "@mnee-ui/ui"`,
 };
 
 const exampleCode = `async function handleSubmit() {
@@ -37,7 +38,10 @@ export default function CodeBlockPage() {
   return (
     <div>
       <p className="text-xs font-mono text-gray-400 mb-2">Components</p>
-      <h1 className="text-3xl font-bold text-gray-900 mb-3 tracking-tight">CodeBlock</h1>
+      <div className="flex items-center gap-2.5 mb-3">
+        <h1 className="text-3xl font-bold text-gray-900 tracking-tight">CodeBlock</h1>
+        <ComponentStatus status="in-progress" />
+      </div>
       <p className="text-gray-500 mb-8 leading-relaxed">
         Client-side syntax-highlighted code display with title bar and copy button.
         Uses Shiki with the <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono">dark-plus</code> theme.
@@ -48,7 +52,7 @@ export default function CodeBlockPage() {
       <h2 className="text-lg font-semibold text-gray-900 mb-3">Basic</h2>
       <ComponentPreview code={snippets.basic} className="mb-8">
         <div className="w-full">
-          <CodeBlock code="npm install @mnee/ui" />
+          <CodeBlock code="npm install @mnee-ui/ui" />
         </div>
       </ComponentPreview>
 
@@ -56,7 +60,7 @@ export default function CodeBlockPage() {
       <h2 className="text-lg font-semibold text-gray-900 mb-3">With title</h2>
       <ComponentPreview code={snippets.withTitle} className="mb-8">
         <div className="w-full">
-          <CodeBlock title="Install the package" code="npm install @mnee/ui" />
+          <CodeBlock title="Install the package" code="npm install @mnee-ui/ui" />
         </div>
       </ComponentPreview>
 

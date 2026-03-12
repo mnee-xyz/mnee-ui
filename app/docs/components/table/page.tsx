@@ -8,6 +8,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { ComponentPreview } from "@/components/site/ComponentPreview";
 import { CodeBlock } from "@/components/site/CodeBlock";
+import { ComponentStatus } from "@/components/site/ComponentStatus";
 
 const snippets = {
   basic: `<Table>
@@ -66,7 +67,7 @@ const snippets = {
   Table, TableHead, TableBody, TableRow,
   TableHeader, TableCell, TableEmpty, TableLoading,
   Pagination,
-} from "@mnee/ui"`,
+} from "@mnee-ui/ui"`,
 };
 
 const ROWS = [
@@ -136,7 +137,10 @@ export default function TablePage() {
   return (
     <div>
       <p className="text-xs font-mono text-gray-400 mb-2">Components</p>
-      <h1 className="text-3xl font-bold text-gray-900 mb-3 tracking-tight">Table</h1>
+      <div className="flex items-center gap-2.5 mb-3">
+        <h1 className="text-3xl font-bold text-gray-900 tracking-tight">Table</h1>
+        <ComponentStatus status="in-progress" />
+      </div>
       <p className="text-gray-500 mb-8 leading-relaxed">
         Compound table primitives for displaying structured data. Compose{" "}
         <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono">Table</code>,{" "}

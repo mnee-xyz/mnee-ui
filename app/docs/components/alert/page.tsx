@@ -1,6 +1,7 @@
 import { Alert } from "@/components/ui/alert";
 import { ComponentPreview } from "@/components/site/ComponentPreview";
 import { CodeBlock } from "@/components/site/CodeBlock";
+import { ComponentStatus } from "@/components/site/ComponentStatus";
 
 const snippets = {
   info: `<Alert variant="info">
@@ -21,14 +22,17 @@ const snippets = {
   You can override the default title label.
 </Alert>`,
 
-  install: `import { Alert } from "@mnee/ui"`,
+  install: `import { Alert } from "@mnee-ui/ui"`,
 };
 
 export default function AlertPage() {
   return (
     <div>
       <p className="text-xs font-mono text-gray-400 mb-2">Components</p>
-      <h1 className="text-3xl font-bold text-gray-900 mb-3 tracking-tight">Alert</h1>
+      <div className="flex items-center gap-2.5 mb-3">
+        <h1 className="text-3xl font-bold text-gray-900 tracking-tight">Alert</h1>
+        <ComponentStatus status="in-progress" />
+      </div>
       <p className="text-gray-500 mb-8 leading-relaxed">
         Compact inline callout for notes, tips, warnings, and errors within prose or form content.
         Distinct from{" "}

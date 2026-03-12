@@ -2,17 +2,18 @@ import { Wallet, Zap, Send } from "lucide-react";
 import { Icon, MneeIcon } from "@/components/ui/icons";
 import { ComponentPreview } from "@/components/site/ComponentPreview";
 import { CodeBlock } from "@/components/site/CodeBlock";
+import { ComponentStatus } from "@/components/site/ComponentStatus";
 
 const snippets = {
   basic: `import { Wallet, Zap, Send } from "lucide-react";
-import { Icon } from "@mnee/ui";
+import { Icon } from "@mnee-ui/ui";
 
 <Icon icon={Wallet} />
 <Icon icon={Zap} size="lg" />
 <Icon icon={Send} size="xl" className="text-brand" />`,
 
   sizes: `import { Wallet } from "lucide-react";
-import { Icon } from "@mnee/ui";
+import { Icon } from "@mnee-ui/ui";
 
 <Icon icon={Wallet} size="xs" />  {/* 12px */}
 <Icon icon={Wallet} size="sm" />  {/* 14px */}
@@ -21,7 +22,7 @@ import { Icon } from "@mnee/ui";
 <Icon icon={Wallet} size="xl" />  {/* 24px */}`,
 
   colors: `import { Wallet } from "lucide-react";
-import { Icon } from "@mnee/ui";
+import { Icon } from "@mnee-ui/ui";
 
 <Icon icon={Wallet} className="text-gray-700" />
 <Icon icon={Wallet} className="text-brand" />
@@ -32,7 +33,7 @@ import { Icon } from "@mnee/ui";
   brand: `<MneeIcon className="w-10 h-10" />`,
 
   install: `import { Wallet, Zap } from "lucide-react";
-import { Icon } from "@mnee/ui";
+import { Icon } from "@mnee-ui/ui";
 
 // Pass any Lucide icon as a component reference
 <Icon icon={Wallet} size="md" />`,
@@ -42,7 +43,10 @@ export default function IconsPage() {
   return (
     <div>
       <p className="text-xs font-mono text-gray-400 mb-2">Components</p>
-      <h1 className="text-3xl font-bold text-gray-900 mb-3 tracking-tight">Icons</h1>
+      <div className="flex items-center gap-2.5 mb-3">
+        <h1 className="text-3xl font-bold text-gray-900 tracking-tight">Icons</h1>
+        <ComponentStatus status="in-progress" />
+      </div>
       <p className="text-gray-500 mb-8 leading-relaxed">
         A thin wrapper around{" "}
         <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono">lucide-react</code>{" "}
