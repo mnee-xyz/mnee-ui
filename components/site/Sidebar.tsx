@@ -28,7 +28,8 @@ const navigation: Array<{
     section: "Components",
     items: [
       { label: "Button", href: "/docs/components/button", status: "stable" as const },
-      { label: "Button Icon", href: "/docs/components/button-icon", status: "in-progress" as const },
+<<<<<<< HEAD
+      { label: "Button Icon", href: "/docs/components/button-icon", status: "stable" as const },
       { label: "Badge", href: "/docs/components/badge", status: "in-progress" as const },
       { label: "Card", href: "/docs/components/card", status: "in-progress" as const },
       { label: "Input", href: "/docs/components/input", status: "in-progress" as const },

@@ -1,5 +1,4 @@
 export * from "./button";
-export * from "./button-icon";
 export * from "./badge";
 export { Card, CardContainer } from "./card";
 export type { CardProps, CardContainerProps } from "./card";
