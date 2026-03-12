@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ComponentPreview } from "@/components/site/ComponentPreview";
 import { CodeBlock } from "@/components/site/CodeBlock";
+import { ComponentStatus } from "@/components/site/ComponentStatus";
 
 const snippets = {
   variants: `<Button variant="primary">Primary</Button>
@@ -16,14 +17,17 @@ const snippets = {
   states: `<Button loading>Saving...</Button>
 <Button disabled>Disabled</Button>`,
 
-  install: `import { Button } from "@mnee/ui"`,
+  install: `import { Button } from "@mnee-ui/ui"`,
 };
 
 export default function ButtonPage() {
   return (
     <div>
       <p className="text-xs font-mono text-gray-400 mb-2">Components</p>
-      <h1 className="text-3xl font-bold text-gray-900 mb-3 tracking-tight">Button</h1>
+      <div className="flex items-center gap-2.5 mb-3">
+        <h1 className="text-3xl font-bold text-gray-900 tracking-tight">Button</h1>
+        <ComponentStatus status="stable" />
+      </div>
       <p className="text-gray-500 mb-8 leading-relaxed">
         Triggers actions or navigation. Use <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono">primary</code> for
         main CTAs, <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono">outline</code> for secondary actions, and{" "}

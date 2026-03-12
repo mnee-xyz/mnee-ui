@@ -5,6 +5,7 @@ import { Drawer } from "@/components/ui/drawer";
 import { Button } from "@/components/ui/button";
 import { ComponentPreview } from "@/components/site/ComponentPreview";
 import { CodeBlock } from "@/components/site/CodeBlock";
+import { ComponentStatus } from "@/components/site/ComponentStatus";
 
 const snippets = {
   basic: `const [open, setOpen] = useState(false);
@@ -42,7 +43,7 @@ const snippets = {
   side: `<Drawer isOpen={open} onClose={close} side="left"  title="Left drawer">{/* ... */}</Drawer>
 <Drawer isOpen={open} onClose={close} side="right" title="Right drawer">{/* ... */}</Drawer>`,
 
-  install: `import { Drawer } from "@mnee/ui"`,
+  install: `import { Drawer } from "@mnee-ui/ui"`,
 };
 
 function DetailRow({ label, value }: { label: string; value: string }) {
@@ -148,7 +149,10 @@ export default function DrawerPage() {
   return (
     <div>
       <p className="text-xs font-mono text-gray-400 mb-2">Components</p>
-      <h1 className="text-3xl font-bold text-gray-900 mb-3 tracking-tight">Drawer</h1>
+      <div className="flex items-center gap-2.5 mb-3">
+        <h1 className="text-3xl font-bold text-gray-900 tracking-tight">Drawer</h1>
+        <ComponentStatus status="in-progress" />
+      </div>
       <p className="text-gray-500 mb-8 leading-relaxed">
         Side panel that slides in from the left or right edge of the screen.
         Closes on backdrop click or <kbd className="text-xs bg-gray-100 border border-gray-200 px-1.5 py-0.5 rounded font-mono">Esc</kbd>.

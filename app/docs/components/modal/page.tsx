@@ -5,6 +5,7 @@ import { Modal } from "@/components/ui/modal";
 import { Button } from "@/components/ui/button";
 import { ComponentPreview } from "@/components/site/ComponentPreview";
 import { CodeBlock } from "@/components/site/CodeBlock";
+import { ComponentStatus } from "@/components/site/ComponentStatus";
 
 const snippets = {
   basic: `const [open, setOpen] = useState(false);
@@ -29,7 +30,7 @@ const snippets = {
 <Modal isOpen={open} onClose={close} title="Medium (520px)" size="md">{/* ... */}</Modal>
 <Modal isOpen={open} onClose={close} title="Large (640px)"  size="lg">{/* ... */}</Modal>`,
 
-  install: `import { Modal } from "@mnee/ui"`,
+  install: `import { Modal } from "@mnee-ui/ui"`,
 };
 
 function BasicDemo() {
@@ -91,7 +92,10 @@ export default function ModalPage() {
   return (
     <div>
       <p className="text-xs font-mono text-gray-400 mb-2">Components</p>
-      <h1 className="text-3xl font-bold text-gray-900 mb-3 tracking-tight">Modal</h1>
+      <div className="flex items-center gap-2.5 mb-3">
+        <h1 className="text-3xl font-bold text-gray-900 tracking-tight">Modal</h1>
+        <ComponentStatus status="in-progress" />
+      </div>
       <p className="text-gray-500 mb-8 leading-relaxed">
         Centered overlay dialog for confirmations, forms, and focused interactions.
         Closes on backdrop click or <kbd className="text-xs bg-gray-100 border border-gray-200 px-1.5 py-0.5 rounded font-mono">Esc</kbd>.

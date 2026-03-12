@@ -2,6 +2,7 @@ import { Toast } from "@/components/ui/toast";
 import { ComponentPreview } from "@/components/site/ComponentPreview";
 import { CodeBlock } from "@/components/site/CodeBlock";
 import { ToastLiveDemo } from "./ToastDemo";
+import { ComponentStatus } from "@/components/site/ComponentStatus";
 
 const snippets = {
   variants: `<Toast type="success" message="Payment processed successfully." onClose={() => {}} />
@@ -11,7 +12,7 @@ const snippets = {
 <Toast type="default" message="Changes saved." onClose={() => {}} />`,
 
   setup: `// In your root layout or _app
-import { ToastProvider } from "@mnee/ui";
+import { ToastProvider } from "@mnee-ui/ui";
 
 export default function RootLayout({ children }) {
   return (
@@ -21,7 +22,7 @@ export default function RootLayout({ children }) {
   );
 }`,
 
-  usage: `import { useToast } from "@mnee/ui";
+  usage: `import { useToast } from "@mnee-ui/ui";
 
 function MyComponent() {
   const { showToast } = useToast();
@@ -33,14 +34,17 @@ function MyComponent() {
   );
 }`,
 
-  install: `import { Toast, ToastProvider, useToast } from "@mnee/ui"`,
+  install: `import { Toast, ToastProvider, useToast } from "@mnee-ui/ui"`,
 };
 
 export default function ToastPage() {
   return (
     <div>
         <p className="text-xs font-mono text-gray-400 mb-2">Components</p>
-        <h1 className="text-3xl font-bold text-gray-900 mb-3 tracking-tight">Toast</h1>
+        <div className="flex items-center gap-2.5 mb-3">
+          <h1 className="text-3xl font-bold text-gray-900 tracking-tight">Toast</h1>
+          <ComponentStatus status="in-progress" />
+        </div>
         <p className="text-gray-500 mb-8 leading-relaxed">
           Transient feedback notifications. Slides in from the top-right corner and auto-dismisses
           after 4 seconds. Wrap your app in{" "}

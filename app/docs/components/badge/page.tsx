@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { ComponentPreview } from "@/components/site/ComponentPreview";
 import { CodeBlock } from "@/components/site/CodeBlock";
+import { ComponentStatus } from "@/components/site/ComponentStatus";
 
 const snippets = {
   variants: `<Badge variant="success">Completed</Badge>
@@ -10,7 +11,7 @@ const snippets = {
 <Badge variant="default">Default</Badge>
 <Badge variant="brand">MNEE Pay</Badge>`,
 
-  usage: `import { Badge } from "@mnee/ui"
+  usage: `import { Badge } from "@mnee-ui/ui"
 
 // Map transaction status to badge variant
 const statusVariant = {
@@ -29,7 +30,10 @@ export default function BadgePage() {
   return (
     <div>
       <p className="text-xs font-mono text-gray-400 mb-2">Components</p>
-      <h1 className="text-3xl font-bold text-gray-900 mb-3 tracking-tight">Badge</h1>
+      <div className="flex items-center gap-2.5 mb-3">
+        <h1 className="text-3xl font-bold text-gray-900 tracking-tight">Badge</h1>
+        <ComponentStatus status="in-progress" />
+      </div>
       <p className="text-gray-500 mb-4 leading-relaxed">
         Compact status labels. Used in the transaction table to communicate payment status.
         Solid-color pills with white text — a visual replica of the product&apos;s status indicators.
