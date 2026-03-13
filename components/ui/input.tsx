@@ -11,6 +11,8 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
   suffix?: string;
   leadingIcon?: React.ReactNode;
   trailingIcon?: React.ReactNode;
+  layout?: "stacked" | "inline";
+  action?: React.ReactNode;
 }
 
 const sizeStyles: Record<InputSize, string> = {
@@ -50,11 +52,62 @@ export function Input({
   suffix,
   leadingIcon,
   trailingIcon,
+  layout,
+  action,
   ...props
 }: InputProps) {
   const inputId = id ?? (label ? label.toLowerCase().replace(/\s+/g, "-") : undefined);
   const hasLeading = leadingIcon != null || prefix != null;
   const hasTrailing = trailingIcon != null || suffix != null;
+
+  const fieldBox = (
+    <div
+      className={cn(
+        "flex items-center w-full border bg-white transition-colors",
+        "focus-within:ring-2 focus-within:ring-brand/50",
+        "has-[input:disabled]:pointer-events-none has-[input:disabled]:opacity-50",
+        error
+          ? "border-error focus-within:border-error focus-within:ring-error/30"
+          : "border-gray-300 focus-within:border-brand",
+        sizeStyles[size],
+      )}
+    >
+      {leadingIcon && (
+        <span className={cn("flex items-center pointer-events-none text-gray-400", addonPaddingStyles[size], iconSizeStyles[size])}>
+          {leadingIcon}
+        </span>
+      )}
+      {prefix && (
+        <span className={cn("flex items-center pointer-events-none text-gray-400 select-none", addonPaddingStyles[size])}>
+          {prefix}
+        </span>
+      )}
+      <input
+        id={inputId}
+        disabled={disabled}
+        required={required}
+        aria-invalid={!!error}
+        aria-describedby={error ? `${inputId}-error` : hint ? `${inputId}-hint` : undefined}
+        className={cn(
+          "flex-1 min-w-0 bg-transparent outline-none placeholder:text-gray-400",
+          inputPaddingStyles[size],
+          hasLeading && "pl-1.5",
+          hasTrailing && "pr-1.5",
+        )}
+        {...props}
+      />
+      {suffix && (
+        <span className={cn("flex items-center pointer-events-none text-gray-400 select-none", addonPaddingStyles[size])}>
+          {suffix}
+        </span>
+      )}
+      {trailingIcon && (
+        <span className={cn("flex items-center pointer-events-none text-gray-400", addonPaddingStyles[size], iconSizeStyles[size])}>
+          {trailingIcon}
+        </span>
+      )}
+    </div>
+  );
 
   return (
     <div className={cn("w-full flex flex-col gap-1", className)}>
@@ -69,61 +122,27 @@ export function Input({
           )}
         </label>
       )}
-      <div
-        className={cn(
-          "flex items-center w-full border bg-white transition-colors",
-          "focus-within:ring-2 focus-within:ring-brand/50",
-          "has-[input:disabled]:pointer-events-none has-[input:disabled]:opacity-50",
-          error
-            ? "border-error focus-within:border-error focus-within:ring-error/30"
-            : "border-gray-300 focus-within:border-brand",
-          sizeStyles[size],
-        )}
-      >
-        {leadingIcon && (
-          <span className={cn("flex items-center pointer-events-none text-gray-400", addonPaddingStyles[size], iconSizeStyles[size])}>
-            {leadingIcon}
-          </span>
-        )}
-        {prefix && (
-          <span className={cn("flex items-center pointer-events-none text-gray-400 select-none", addonPaddingStyles[size])}>
-            {prefix}
-          </span>
-        )}
-        <input
-          id={inputId}
-          disabled={disabled}
-          required={required}
-          aria-invalid={!!error}
-          aria-describedby={error ? `${inputId}-error` : hint ? `${inputId}-hint` : undefined}
-          className={cn(
-            "flex-1 min-w-0 bg-transparent outline-none placeholder:text-gray-400",
-            inputPaddingStyles[size],
-            hasLeading && "pl-1.5",
-            hasTrailing && "pr-1.5",
-          )}
-          {...props}
-        />
-        {suffix && (
-          <span className={cn("flex items-center pointer-events-none text-gray-400 select-none", addonPaddingStyles[size])}>
-            {suffix}
-          </span>
-        )}
-        {trailingIcon && (
-          <span className={cn("flex items-center pointer-events-none text-gray-400", addonPaddingStyles[size], iconSizeStyles[size])}>
-            {trailingIcon}
-          </span>
-        )}
-      </div>
+
+      {layout === "inline" ? (
+        <div className="flex items-center gap-2">
+          <div className="flex-1">{fieldBox}</div>
+          {action}
+        </div>
+      ) : (
+        fieldBox
+      )}
+
       {error ? (
         <p id={`${inputId}-error`} className="text-xs text-error">
           {error}
         </p>
-      ) : hint ? (
+      ) : hint && layout !== "inline" ? (
         <p id={`${inputId}-hint`} className="text-xs text-muted">
           {hint}
         </p>
       ) : null}
+
+      {layout === "stacked" && action && <div>{action}</div>}
     </div>
   );
 }

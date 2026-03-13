@@ -1,5 +1,6 @@
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 import { ComponentPreview } from "@/components/site/ComponentPreview";
 import { CodeBlock } from "@/components/site/CodeBlock";
 import { ComponentStatus } from "@/components/site/ComponentStatus";
@@ -34,6 +35,21 @@ const snippets = {
 <Input label="Search" leadingIcon={<Search />} placeholder="Search..." />`,
 
   required: `<Input label="Full name" required placeholder="Jane Doe" />`,
+
+  layoutStacked: `<Input
+  layout="stacked"
+  label="Email"
+  hint="We'll never share your email."
+  placeholder="Email"
+  action={<Button variant="primary" size="md">Submit</Button>}
+/>`,
+
+  layoutInline: `<Input
+  layout="inline"
+  label="Subscribe"
+  placeholder="you@example.com"
+  action={<Button variant="primary" size="md">Join</Button>}
+/>`,
 
   install: `import { Input } from "@mnee-ui/ui"`,
 };
@@ -139,6 +155,39 @@ export default function InputPage() {
         </div>
       </ComponentPreview>
 
+      {/* Layout: stacked */}
+      <h2 className="text-lg font-semibold text-gray-900 mb-3">Layout: stacked</h2>
+      <p className="text-gray-500 text-sm mb-3">
+        Use <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono">layout=&quot;stacked&quot;</code> to render an action slot (e.g. a Button) below the field.
+      </p>
+      <ComponentPreview code={snippets.layoutStacked} className="mb-8">
+        <div className="w-72">
+          <Input
+            layout="stacked"
+            label="Email"
+            hint="We'll never share your email."
+            placeholder="Email"
+            action={<Button variant="primary" size="md">Submit</Button>}
+          />
+        </div>
+      </ComponentPreview>
+
+      {/* Layout: inline */}
+      <h2 className="text-lg font-semibold text-gray-900 mb-3">Layout: inline</h2>
+      <p className="text-gray-500 text-sm mb-3">
+        Use <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono">layout=&quot;inline&quot;</code> to place the action beside the field — ideal for newsletter sign-ups. The hint is hidden in inline mode.
+      </p>
+      <ComponentPreview code={snippets.layoutInline} className="mb-10">
+        <div className="w-96">
+          <Input
+            layout="inline"
+            label="Subscribe"
+            placeholder="you@example.com"
+            action={<Button variant="primary" size="md">Join</Button>}
+          />
+        </div>
+      </ComponentPreview>
+
       {/* Usage */}
       <h2 className="text-lg font-semibold text-gray-900 mb-3">Usage</h2>
       <CodeBlock code={snippets.install} lang="tsx" />
@@ -169,6 +218,8 @@ export default function InputPage() {
               ["disabled", "boolean", "false", "Disables the input"],
               ["placeholder", "string", "—", "Placeholder text"],
               ["className", "string", "—", "Layout utilities only (margin, width) — applied to the outer field wrapper"],
+              ["layout", `"stacked" | "inline"`, "—", "stacked: renders action below the field; inline: renders action beside it (hint hidden)"],
+              ["action", "ReactNode", "—", "Action element (e.g. Button) placed via the layout slot"],
             ].map(([prop, type, def, desc]) => (
               <tr key={prop} className="hover:bg-gray-50">
                 <td className="px-4 py-2.5 border-b border-[#E5E5E5] font-mono text-xs text-gray-800">{prop}</td>
