@@ -26,11 +26,10 @@ figma.connect(Input, "https://www.figma.com/design/qzjrgEgx4q7MAU9ypgwp48?node-i
     required: figma.boolean("is Required"),
     disabled: figma.enum("State", { Disable: true, Default: undefined, Focus: undefined, Error: undefined }),
     error: figma.enum("State", { Error: "Invalid value", Default: undefined, Focus: undefined, Disable: undefined }),
-    action: figma.children("Buttons"),
   },
-  example: ({ label, hint, required, disabled, error, action }) => (
+  example: ({ label, hint, required, disabled, error }) => (
     <Input layout="stacked" label={label} hint={hint} required={required}
-      disabled={disabled} error={error} placeholder="Email" action={action} />
+      disabled={disabled} error={error} placeholder="Email" />
   ),
   links: [{ name: "Documentation", url: "https://mnee-ui.vercel.app/docs/components/input" }],
 });
@@ -42,11 +41,10 @@ figma.connect(Input, "https://www.figma.com/design/qzjrgEgx4q7MAU9ypgwp48?node-i
     required: figma.boolean("is Required"),
     disabled: figma.enum("Property 1", { Disable: true, Default: undefined, Focus: undefined, Error: undefined }),
     error: figma.enum("Property 1", { Error: "Invalid value", Default: undefined, Focus: undefined, Disable: undefined }),
-    action: figma.children("Buttons"),
   },
-  example: ({ label, required, disabled, error, action }) => (
+  example: ({ label, required, disabled, error }) => (
     <Input layout="inline" label={label} required={required}
-      disabled={disabled} error={error} placeholder="Email" action={action} />
+      disabled={disabled} error={error} placeholder="Email" />
   ),
   links: [{ name: "Documentation", url: "https://mnee-ui.vercel.app/docs/components/input" }],
 });
