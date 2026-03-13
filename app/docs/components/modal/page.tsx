@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Modal } from "@/components/ui/modal";
+import { Modal, ModalHeader, ModalBody, ModalFooter } from "@/components/ui/modal";
 import { Button } from "@/components/ui/button";
 import { ComponentPreview } from "@/components/site/ComponentPreview";
 import { CodeBlock } from "@/components/site/CodeBlock";
@@ -30,7 +30,23 @@ const snippets = {
 <Modal isOpen={open} onClose={close} title="Medium (520px)" size="md">{/* ... */}</Modal>
 <Modal isOpen={open} onClose={close} title="Large (640px)"  size="lg">{/* ... */}</Modal>`,
 
-  install: `import { Modal } from "@mnee-ui/ui"`,
+  install: `import { Modal, ModalHeader, ModalBody, ModalFooter } from "@mnee-ui/ui"`,
+
+  subcomponents: `// Canonical two-button footer using sub-components
+<Modal isOpen={open} onClose={close}>
+  <ModalHeader>
+    <h2 className="text-lg font-semibold flex-1">Delete record</h2>
+  </ModalHeader>
+  <ModalBody>
+    <p className="text-sm text-gray-600">This action cannot be undone.</p>
+  </ModalBody>
+  <ModalFooter>
+    <div className="flex justify-end gap-2">
+      <Button variant="ghost" onClick={close}>Cancel</Button>
+      <Button variant="destructive" onClick={handleDelete}>Delete</Button>
+    </div>
+  </ModalFooter>
+</Modal>`,
 };
 
 function BasicDemo() {
@@ -113,6 +129,41 @@ export default function ModalPage() {
       <ComponentPreview code={snippets.sizes} className="mb-10">
         <SizesDemo />
       </ComponentPreview>
+
+      {/* Sub-components */}
+      <h2 className="text-lg font-semibold text-gray-900 mb-3">Sub-components</h2>
+      <p className="text-gray-500 mb-4 text-sm leading-relaxed">
+        <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono">ModalHeader</code>,{" "}
+        <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono">ModalBody</code>, and{" "}
+        <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono">ModalFooter</code> are
+        exported standalone for custom modal layouts. All three accept{" "}
+        <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono">className</code> and
+        standard <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono">HTMLDivElement</code> props.
+      </p>
+      <CodeBlock code={snippets.subcomponents} lang="tsx" className="mb-8" />
+
+      <div className="overflow-auto rounded-lg border border-[#E5E5E5] mb-10">
+        <table className="w-full text-sm border-collapse">
+          <thead>
+            <tr>
+              <th className="text-left px-4 py-2.5 border-b border-[#E5E5E5] text-xs font-semibold text-gray-500 uppercase bg-gray-50">Component</th>
+              <th className="text-left px-4 py-2.5 border-b border-[#E5E5E5] text-xs font-semibold text-gray-500 uppercase bg-gray-50">Role</th>
+            </tr>
+          </thead>
+          <tbody>
+            {[
+              ["ModalHeader", "Flex row with bottom border — place title and close button here"],
+              ["ModalBody", "Scrollable content area with vertical padding"],
+              ["ModalFooter", "Sticky bottom bar with top border — place action buttons here"],
+            ].map(([comp, role]) => (
+              <tr key={comp} className="hover:bg-gray-50">
+                <td className="px-4 py-2.5 border-b border-[#E5E5E5] font-mono text-xs text-gray-800">{comp}</td>
+                <td className="px-4 py-2.5 border-b border-[#E5E5E5] text-xs text-gray-600">{role}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
       {/* Usage */}
       <h2 className="text-lg font-semibold text-gray-900 mb-3">Usage</h2>

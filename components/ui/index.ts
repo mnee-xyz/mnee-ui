@@ -11,5 +11,6 @@ export * from "./table";
 export * from "./drawer";
 export * from "./modal";
 export * from "./alert";
+export * from "./skeleton";
 export * from "./code-block";
 export type { LucideIcon, LucideProps } from "lucide-react";

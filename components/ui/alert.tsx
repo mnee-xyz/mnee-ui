@@ -9,6 +9,8 @@ export interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
   variant?: AlertVariant;
   title?: string;
   children?: React.ReactNode;
+  /** Optional action element (e.g. a Button) rendered at the trailing edge */
+  action?: React.ReactNode;
 }
 
 const variantStyles: Record<AlertVariant, { wrapper: string; text: string }> = {
@@ -54,6 +56,7 @@ export function Alert({
   variant = "info",
   title,
   children,
+  action,
   className,
   ...props
 }: AlertProps) {
@@ -70,15 +73,20 @@ export function Alert({
       )}
       {...props}
     >
-      <div className={cn("flex items-center gap-2 font-medium text-[12px]", styles.text)}>
-        <Icon size={15} />
-        <span>{label}</span>
-      </div>
-      {children && (
-        <div className={cn("pl-6 font-light text-[12px]", styles.text)}>
-          {children}
+      <div className="flex items-start justify-between gap-3">
+        <div className="flex-1">
+          <div className={cn("flex items-center gap-2 font-medium text-[12px]", styles.text)}>
+            <Icon size={15} />
+            <span>{label}</span>
+          </div>
+          {children && (
+            <div className={cn("pl-6 font-light text-[12px]", styles.text)}>
+              {children}
+            </div>
+          )}
         </div>
-      )}
+        {action && <div className="shrink-0">{action}</div>}
+      </div>
     </div>
   );
 }

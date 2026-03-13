@@ -39,6 +39,7 @@ const navigation: Array<{
       { label: "Drawer", href: "/docs/components/drawer", status: "in-progress" as const },
       { label: "Modal", href: "/docs/components/modal", status: "in-progress" as const },
       { label: "Alert", href: "/docs/components/alert", status: "in-progress" as const },
+      { label: "Skeleton", href: "/docs/components/skeleton", status: "stable" as const },
       { label: "CodeBlock", href: "/docs/components/code-block", status: "in-progress" as const },
     ],
   },

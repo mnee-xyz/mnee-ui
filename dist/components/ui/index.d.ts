@@ -1,4 +1,5 @@
 export * from "./button";
+export * from "./button-icon";
 export * from "./badge";
 export { Card, CardContainer } from "./card";
 export type { CardProps, CardContainerProps } from "./card";
@@ -10,5 +11,6 @@ export * from "./table";
 export * from "./drawer";
 export * from "./modal";
 export * from "./alert";
+export * from "./skeleton";
 export * from "./code-block";
 export type { LucideIcon, LucideProps } from "lucide-react";

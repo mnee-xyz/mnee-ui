@@ -7,4 +7,7 @@ export default defineConfig({
   external: ["react", "react-dom", "lucide-react"],
   clean: true,
   outDir: "dist",
+  esbuildOptions(options) {
+    options.jsx = "automatic";
+  },
 });

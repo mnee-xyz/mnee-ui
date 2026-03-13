@@ -1,4 +1,5 @@
 import { Alert } from "@/components/ui/alert";
+import { Button } from "@/components/ui/button";
 import { ComponentPreview } from "@/components/site/ComponentPreview";
 import { CodeBlock } from "@/components/site/CodeBlock";
 import { ComponentStatus } from "@/components/site/ComponentStatus";
@@ -20,6 +21,13 @@ const snippets = {
 
   customTitle: `<Alert variant="info" title="Custom title">
   You can override the default title label.
+</Alert>`,
+
+  withAction: `<Alert
+  variant="warning"
+  action={<Button size="sm" variant="outline">Verify Now</Button>}
+>
+  Your email address has not been verified.
 </Alert>`,
 
   install: `import { Alert } from "@mnee-ui/ui"`,
@@ -74,10 +82,23 @@ export default function AlertPage() {
 
       {/* Custom title */}
       <h2 className="text-lg font-semibold text-gray-900 mb-3">Custom title</h2>
-      <ComponentPreview code={snippets.customTitle} className="mb-10">
+      <ComponentPreview code={snippets.customTitle} className="mb-8">
         <div className="w-full max-w-lg">
           <Alert variant="info" title="Custom title">
             You can override the default title label.
+          </Alert>
+        </div>
+      </ComponentPreview>
+
+      {/* With action */}
+      <h2 className="text-lg font-semibold text-gray-900 mb-3">With action</h2>
+      <ComponentPreview code={snippets.withAction} className="mb-10">
+        <div className="w-full max-w-lg">
+          <Alert
+            variant="warning"
+            action={<Button size="sm" variant="outline">Verify Now</Button>}
+          >
+            Your email address has not been verified.
           </Alert>
         </div>
       </ComponentPreview>
@@ -103,6 +124,7 @@ export default function AlertPage() {
               ["variant", `"info" | "warning" | "tip" | "error" | "success"`, `"info"`, "Visual style and default icon/label"],
               ["title", "string", "variant label", "Override the default label (Note, Warning, Tip…)"],
               ["children", "ReactNode", "—", "Content rendered below the title row"],
+              ["action", "ReactNode", "—", "Trailing action element (e.g. a Button)"],
               ["className", "string", "—", "Layout utilities (margin, width)"],
             ].map(([prop, type, def, desc]) => (
               <tr key={prop} className="hover:bg-gray-50">
