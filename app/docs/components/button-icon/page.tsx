@@ -1,6 +1,7 @@
 import { ButtonIcon } from "@/components/ui/button-icon";
 import { ComponentPreview } from "@/components/site/ComponentPreview";
 import { CodeBlock } from "@/components/site/CodeBlock";
+import { ComponentStatus } from "@/components/site/ComponentStatus";
 import { ChevronRight } from "lucide-react";
 
 const snippets = {
@@ -20,7 +21,10 @@ export default function ButtonIconPage() {
   return (
     <div>
       <p className="text-xs font-mono text-gray-400 mb-2">Components</p>
-      <h1 className="text-3xl font-bold text-gray-900 mb-3 tracking-tight">Button Icon</h1>
+      <div className="flex items-center gap-2.5 mb-3">
+        <h1 className="text-3xl font-bold text-gray-900 tracking-tight">Button Icon</h1>
+        <ComponentStatus status="stable" />
+      </div>
       <p className="text-gray-500 mb-8 leading-relaxed">
         A square icon-only button. Use when there is no room for a text label —
         toolbars, table actions, or icon-dense UIs.
