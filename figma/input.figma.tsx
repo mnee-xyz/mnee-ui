@@ -1,7 +1,9 @@
 import figma from "@figma/code-connect";
 import { Input } from "components/ui/input";
 
-// ─── InputField ───────────────────────────────────────────────────────────────
+// ─── InputField (standalone) ─────────────────────────────────────────────────
+// The base text input. Works standalone and is also resolved by figma.children()
+// when nested inside InputStack / InputInline.
 figma.connect(Input, "https://www.figma.com/design/qzjrgEgx4q7MAU9ypgwp48?node-id=520-3062", {
   props: {
     placeholder: figma.string("Placeholder"),
@@ -18,33 +20,11 @@ figma.connect(Input, "https://www.figma.com/design/qzjrgEgx4q7MAU9ypgwp48?node-i
   links: [{ name: "Documentation", url: "https://mnee-ui.vercel.app/docs/components/input" }],
 });
 
-// ─── InputStack ───────────────────────────────────────────────────────────────
-figma.connect(Input, "https://www.figma.com/design/qzjrgEgx4q7MAU9ypgwp48?node-id=588-108", {
-  props: {
-    label: figma.string("Label"),
-    hint: figma.string("Hint value"),
-    required: figma.boolean("is Required"),
-    disabled: figma.enum("State", { Disable: true, Default: undefined, Focus: undefined, Error: undefined }),
-    error: figma.enum("State", { Error: "Invalid value", Default: undefined, Focus: undefined, Disable: undefined }),
-  },
-  example: ({ label, hint, required, disabled, error }) => (
-    <Input layout="stacked" label={label} hint={hint} required={required}
-      disabled={disabled} error={error} placeholder="Email" />
-  ),
-  links: [{ name: "Documentation", url: "https://mnee-ui.vercel.app/docs/components/input" }],
-});
+// ─── InputStack (588:108) — NOT CONNECTED ────────────────────────────────────
+// Figma Dev Mode renderer crashes when a parent component set has child
+// instances with their own Code Connect (confirmed via systematic testing).
+// Designers selecting InputStack will see the InputField child's snippet.
+// See: https://github.com/figma/code-connect/issues/93
 
-// ─── InputInline ──────────────────────────────────────────────────────────────
-figma.connect(Input, "https://www.figma.com/design/qzjrgEgx4q7MAU9ypgwp48?node-id=3384-10681", {
-  props: {
-    label: figma.string("Label"),
-    required: figma.boolean("is Required"),
-    disabled: figma.enum("Property 1", { Disable: true, Default: undefined, Focus: undefined, Error: undefined }),
-    error: figma.enum("Property 1", { Error: "Invalid value", Default: undefined, Focus: undefined, Disable: undefined }),
-  },
-  example: ({ label, required, disabled, error }) => (
-    <Input layout="inline" label={label} required={required}
-      disabled={disabled} error={error} placeholder="Email" />
-  ),
-  links: [{ name: "Documentation", url: "https://mnee-ui.vercel.app/docs/components/input" }],
-});
+// ─── InputInline (3384:10681) — NOT CONNECTED ───────────────────────────────
+// Same limitation as InputStack above.

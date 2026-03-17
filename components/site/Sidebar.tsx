@@ -31,7 +31,7 @@ const navigation: Array<{
       { label: "Button Icon", href: "/docs/components/button-icon", status: "stable" as const },
       { label: "Badge", href: "/docs/components/badge", status: "in-progress" as const },
       { label: "Card", href: "/docs/components/card", status: "in-progress" as const },
-      { label: "Input", href: "/docs/components/input", status: "in-progress" as const },
+      { label: "Input", href: "/docs/components/input", status: "stable" as const },
       { label: "Toast", href: "/docs/components/toast", status: "in-progress" as const },
       { label: "Icons", href: "/docs/components/icons", status: "in-progress" as const },
       { label: "Banner", href: "/docs/components/banner", status: "in-progress" as const },

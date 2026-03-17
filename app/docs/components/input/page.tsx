@@ -36,19 +36,91 @@ const snippets = {
 
   required: `<Input label="Full name" required placeholder="Jane Doe" />`,
 
-  layoutStacked: `<Input
+  // ── InputStack (layout="stacked") ──────────────────────────
+  stackDefault: `<Input
   layout="stacked"
   label="Email"
-  hint="We'll never share your email."
+  hint="This is your public display name."
   placeholder="Email"
-  action={<Button variant="primary" size="md">Submit</Button>}
+  action={<Button variant="primary">Submit</Button>}
 />`,
 
-  layoutInline: `<Input
+  stackRequired: `<Input
+  layout="stacked"
+  label="Email"
+  hint="This is your public display name."
+  placeholder="Email"
+  required
+  action={<Button variant="primary">Submit</Button>}
+/>`,
+
+  stackError: `<Input
+  layout="stacked"
+  label="Email"
+  error="This is your public display name."
+  placeholder="Email"
+  action={<Button variant="primary">Submit</Button>}
+/>`,
+
+  stackDisabled: `<Input
+  layout="stacked"
+  label="Email"
+  hint="This is your public display name."
+  placeholder="Email"
+  disabled
+  action={<Button variant="primary" disabled>Submit</Button>}
+/>`,
+
+  stackNoHint: `<Input
+  layout="stacked"
+  label="Email"
+  placeholder="Email"
+  action={<Button variant="primary">Submit</Button>}
+/>`,
+
+  stackNoButton: `<Input
+  layout="stacked"
+  label="Email"
+  hint="This is your public display name."
+  placeholder="Email"
+/>`,
+
+  // ── InputInline (layout="inline") ──────────────────────────
+  inlineDefault: `<Input
   layout="inline"
-  label="Subscribe"
-  placeholder="you@example.com"
-  action={<Button variant="primary" size="md">Join</Button>}
+  label="Email"
+  placeholder="Email"
+  action={<Button variant="primary">Submit</Button>}
+/>`,
+
+  inlineRequired: `<Input
+  layout="inline"
+  label="Email"
+  placeholder="Email"
+  required
+  action={<Button variant="primary">Submit</Button>}
+/>`,
+
+  inlineError: `<Input
+  layout="inline"
+  label="Email"
+  error="Invalid email address."
+  placeholder="Email"
+  action={<Button variant="primary">Submit</Button>}
+/>`,
+
+  inlineDisabled: `<Input
+  layout="inline"
+  label="Email"
+  placeholder="Email"
+  disabled
+  action={<Button variant="primary" disabled>Submit</Button>}
+/>`,
+
+  inlineNoLabel: `<Input
+  layout="inline"
+  placeholder="Email"
+  action={<Button variant="primary">Submit</Button>}
 />`,
 
   install: `import { Input } from "@mnee-ui/ui"`,
@@ -60,7 +132,7 @@ export default function InputPage() {
       <p className="text-xs font-mono text-gray-400 mb-2">Components</p>
       <div className="flex items-center gap-2.5 mb-3">
         <h1 className="text-3xl font-bold text-gray-900 tracking-tight">Input</h1>
-        <ComponentStatus status="in-progress" />
+        <ComponentStatus status="stable" />
       </div>
       <p className="text-gray-500 mb-6 leading-relaxed">
         Base text input with optional label, hint, and error states. Extends all
@@ -155,35 +227,186 @@ export default function InputPage() {
         </div>
       </ComponentPreview>
 
-      {/* Layout: stacked */}
-      <h2 className="text-lg font-semibold text-gray-900 mb-3">Layout: stacked</h2>
-      <p className="text-gray-500 text-sm mb-3">
-        Use <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono">layout=&quot;stacked&quot;</code> to render an action slot (e.g. a Button) below the field.
+      {/* ── INPUT STACK (layout="stacked") ──────────────────────── */}
+      <div className="border-t border-gray-200 mt-4 mb-6" />
+      <h2 className="text-xl font-semibold text-gray-900 mb-2">InputStack</h2>
+      <p className="text-gray-500 text-sm mb-2">
+        Use <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono">layout=&quot;stacked&quot;</code> to
+        render label, input, hint/error, and an action button in a vertical stack.
       </p>
-      <ComponentPreview code={snippets.layoutStacked} className="mb-8">
+      <p className="text-xs text-gray-400 mb-6">
+        Figma component: <strong>InputStack</strong> — linked here because nested Code Connect instances
+        are not yet supported in Figma Dev Mode.
+      </p>
+
+      {/* Stack: Default */}
+      <h3 className="text-base font-medium text-gray-900 mb-3">Default</h3>
+      <ComponentPreview code={snippets.stackDefault} className="mb-8">
         <div className="w-72">
           <Input
             layout="stacked"
             label="Email"
-            hint="We'll never share your email."
+            hint="This is your public display name."
             placeholder="Email"
-            action={<Button variant="primary" size="md">Submit</Button>}
+            action={<Button variant="primary">Submit</Button>}
           />
         </div>
       </ComponentPreview>
 
-      {/* Layout: inline */}
-      <h2 className="text-lg font-semibold text-gray-900 mb-3">Layout: inline</h2>
+      {/* Stack: Required */}
+      <h3 className="text-base font-medium text-gray-900 mb-3">With required</h3>
+      <ComponentPreview code={snippets.stackRequired} className="mb-8">
+        <div className="w-72">
+          <Input
+            layout="stacked"
+            label="Email"
+            hint="This is your public display name."
+            placeholder="Email"
+            required
+            action={<Button variant="primary">Submit</Button>}
+          />
+        </div>
+      </ComponentPreview>
+
+      {/* Stack: Error */}
+      <h3 className="text-base font-medium text-gray-900 mb-3">Error</h3>
       <p className="text-gray-500 text-sm mb-3">
-        Use <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono">layout=&quot;inline&quot;</code> to place the action beside the field — ideal for newsletter sign-ups. The hint is hidden in inline mode.
+        When <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono">error</code> is
+        set, it replaces the hint text and the border turns red.
       </p>
-      <ComponentPreview code={snippets.layoutInline} className="mb-10">
+      <ComponentPreview code={snippets.stackError} className="mb-8">
+        <div className="w-72">
+          <Input
+            layout="stacked"
+            label="Email"
+            error="This is your public display name."
+            placeholder="Email"
+            action={<Button variant="primary">Submit</Button>}
+          />
+        </div>
+      </ComponentPreview>
+
+      {/* Stack: Disabled */}
+      <h3 className="text-base font-medium text-gray-900 mb-3">Disabled</h3>
+      <p className="text-gray-500 text-sm mb-3">
+        Pass <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono">disabled</code> to
+        the Input and the action Button to disable the entire group.
+      </p>
+      <ComponentPreview code={snippets.stackDisabled} className="mb-8">
+        <div className="w-72">
+          <Input
+            layout="stacked"
+            label="Email"
+            hint="This is your public display name."
+            placeholder="Email"
+            disabled
+            action={<Button variant="primary" disabled>Submit</Button>}
+          />
+        </div>
+      </ComponentPreview>
+
+      {/* Stack: Without hint */}
+      <h3 className="text-base font-medium text-gray-900 mb-3">Without hint</h3>
+      <ComponentPreview code={snippets.stackNoHint} className="mb-8">
+        <div className="w-72">
+          <Input
+            layout="stacked"
+            label="Email"
+            placeholder="Email"
+            action={<Button variant="primary">Submit</Button>}
+          />
+        </div>
+      </ComponentPreview>
+
+      {/* Stack: Without button */}
+      <h3 className="text-base font-medium text-gray-900 mb-3">Without button</h3>
+      <ComponentPreview code={snippets.stackNoButton} className="mb-8">
+        <div className="w-72">
+          <Input
+            layout="stacked"
+            label="Email"
+            hint="This is your public display name."
+            placeholder="Email"
+          />
+        </div>
+      </ComponentPreview>
+
+      {/* ── INPUT INLINE (layout="inline") ──────────────────────── */}
+      <div className="border-t border-gray-200 mt-4 mb-6" />
+      <h2 className="text-xl font-semibold text-gray-900 mb-2">InputInline</h2>
+      <p className="text-gray-500 text-sm mb-2">
+        Use <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono">layout=&quot;inline&quot;</code> to
+        place the action beside the field — ideal for newsletter sign-ups and quick-submit forms.
+        Hint text is hidden in inline mode.
+      </p>
+      <p className="text-xs text-gray-400 mb-6">
+        Figma component: <strong>InputInline</strong> — linked here because nested Code Connect instances
+        are not yet supported in Figma Dev Mode.
+      </p>
+
+      {/* Inline: Default */}
+      <h3 className="text-base font-medium text-gray-900 mb-3">Default</h3>
+      <ComponentPreview code={snippets.inlineDefault} className="mb-8">
         <div className="w-96">
           <Input
             layout="inline"
-            label="Subscribe"
-            placeholder="you@example.com"
-            action={<Button variant="primary" size="md">Join</Button>}
+            label="Email"
+            placeholder="Email"
+            action={<Button variant="primary">Submit</Button>}
+          />
+        </div>
+      </ComponentPreview>
+
+      {/* Inline: Required */}
+      <h3 className="text-base font-medium text-gray-900 mb-3">With required</h3>
+      <ComponentPreview code={snippets.inlineRequired} className="mb-8">
+        <div className="w-96">
+          <Input
+            layout="inline"
+            label="Email"
+            placeholder="Email"
+            required
+            action={<Button variant="primary">Submit</Button>}
+          />
+        </div>
+      </ComponentPreview>
+
+      {/* Inline: Error */}
+      <h3 className="text-base font-medium text-gray-900 mb-3">Error</h3>
+      <ComponentPreview code={snippets.inlineError} className="mb-8">
+        <div className="w-96">
+          <Input
+            layout="inline"
+            label="Email"
+            error="Invalid email address."
+            placeholder="Email"
+            action={<Button variant="primary">Submit</Button>}
+          />
+        </div>
+      </ComponentPreview>
+
+      {/* Inline: Disabled */}
+      <h3 className="text-base font-medium text-gray-900 mb-3">Disabled</h3>
+      <ComponentPreview code={snippets.inlineDisabled} className="mb-8">
+        <div className="w-96">
+          <Input
+            layout="inline"
+            label="Email"
+            placeholder="Email"
+            disabled
+            action={<Button variant="primary" disabled>Submit</Button>}
+          />
+        </div>
+      </ComponentPreview>
+
+      {/* Inline: Without label */}
+      <h3 className="text-base font-medium text-gray-900 mb-3">Without label</h3>
+      <ComponentPreview code={snippets.inlineNoLabel} className="mb-10">
+        <div className="w-96">
+          <Input
+            layout="inline"
+            placeholder="Email"
+            action={<Button variant="primary">Submit</Button>}
           />
         </div>
       </ComponentPreview>

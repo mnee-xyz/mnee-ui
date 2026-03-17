@@ -64,10 +64,10 @@ export function Input({
     <div
       className={cn(
         "flex items-center w-full border bg-white transition-colors",
-        "focus-within:ring-2 focus-within:ring-brand/50",
+        "shadow-xs focus-within:ring-[3px] focus-within:ring-brand/50",
         "has-[input:disabled]:pointer-events-none has-[input:disabled]:opacity-50",
         error
-          ? "border-error focus-within:border-error focus-within:ring-error/30"
+          ? "border-error focus-within:border-error focus-within:ring-error/50"
           : "border-gray-300 focus-within:border-brand",
         sizeStyles[size],
       )}

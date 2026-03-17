@@ -34,7 +34,7 @@ export default function UpdatingPage() {
       <p className="text-gray-500 mt-3 mb-3 text-sm">
         To pin to a specific version instead:
       </p>
-      <CodeBlock code={`npm install @mnee-ui/ui@0.0.2`} lang="bash" />
+      <CodeBlock code={`npm install @mnee-ui/ui@0.0.3`} lang="bash" />
 
       <div className="mt-6 mb-8 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
         <strong>No style changes needed on update.</strong> Design tokens are shipped inside the
