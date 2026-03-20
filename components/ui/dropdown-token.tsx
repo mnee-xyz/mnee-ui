@@ -1,9 +1,11 @@
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Coins } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export interface DropdownTokenProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /** Section label above the trigger (e.g. "Convert in") */
   label?: string;
+  /** Show the label */
+  hasLabel?: boolean;
   /** Leading icon node (e.g. TokenIcon) — only rendered when hasLeadingIcon is true */
   icon?: React.ReactNode;
   /** Show the leading icon slot */
@@ -18,8 +20,15 @@ export interface DropdownTokenProps extends React.ButtonHTMLAttributes<HTMLButto
   isOpen?: boolean;
 }
 
+const DefaultIcon = () => (
+  <div className="w-8 h-8 rounded-full bg-white border border-surface-border flex items-center justify-center">
+    <Coins size={18} className="text-gray-400" />
+  </div>
+);
+
 export function DropdownToken({
   label,
+  hasLabel = true,
   icon,
   hasLeadingIcon = true,
   hasTrailingIcon = true,
@@ -31,7 +40,7 @@ export function DropdownToken({
 }: DropdownTokenProps) {
   return (
     <div className={cn("w-full", className)}>
-      {label && (
+      {hasLabel && label && (
         <p className="text-sm text-muted mb-1">{label}</p>
       )}
       <button
@@ -47,8 +56,8 @@ export function DropdownToken({
         {/* Left content — matches Figma "Container" */}
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 w-full">
-            {hasLeadingIcon && icon && (
-              <div className="shrink-0 w-8 h-8">{icon}</div>
+            {hasLeadingIcon && (
+              <div className="shrink-0 w-8 h-8">{icon || <DefaultIcon />}</div>
             )}
             <div className="flex-1 min-w-0">
               <div className="flex flex-col justify-center text-sm font-medium tracking-[-0.15px] leading-5 text-left">

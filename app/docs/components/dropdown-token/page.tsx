@@ -90,14 +90,15 @@ export default function DropdownTokenPage() {
           </thead>
           <tbody>
             {[
-              ["label", "string", "—", "Section label above the trigger (e.g. \"Convert in\")"],
-              ["icon", "React.ReactNode", "—", "Leading icon content (e.g. TokenIcon)"],
+              ["label", "string", "\u2014", "Section label above the trigger (e.g. \"Convert in\")"],
+              ["hasLabel", "boolean", "true", "Show/hide the label"],
+              ["icon", "React.ReactNode", "Coins icon", "Leading icon content (e.g. TokenIcon). Falls back to a placeholder coins icon when omitted"],
               ["hasLeadingIcon", "boolean", "true", "Show/hide the leading icon slot"],
               ["hasTrailingIcon", "boolean", "true", "Show/hide the trailing chevron"],
-              ["title", "string", "—", "Primary text (14px medium)"],
-              ["subtitle", "string", "—", "Secondary text (14px medium, muted)"],
-              ["isOpen", "boolean", "false", "Rotates chevron 180° when open"],
-              ["className", "string", "—", "Additional classes on wrapper div"],
+              ["title", "string", "\u2014", "Primary text (14px medium)"],
+              ["subtitle", "string", "\u2014", "Secondary text (14px medium, muted)"],
+              ["isOpen", "boolean", "false", "Rotates chevron 180\u00b0 when open"],
+              ["className", "string", "\u2014", "Additional classes on wrapper div"],
             ].map(([prop, type, def, desc]) => (
               <tr key={prop} className="hover:bg-gray-50">
                 <td className="px-4 py-2.5 border-b border-[#E5E5E5] font-mono text-xs text-gray-800">{prop}</td>
