@@ -140,7 +140,9 @@ export default function ModalPage() {
         <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono">className</code> and
         standard <code className="text-xs bg-gray-100 px-1.5 py-0.5 rounded font-mono">HTMLDivElement</code> props.
       </p>
-      <CodeBlock code={snippets.subcomponents} lang="tsx" className="mb-8" />
+      <div className="mb-8">
+        <CodeBlock code={snippets.subcomponents} lang="tsx" />
+      </div>
 
       <div className="overflow-auto rounded-lg border border-[#E5E5E5] mb-10">
         <table className="w-full text-sm border-collapse">

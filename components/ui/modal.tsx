@@ -9,7 +9,7 @@ export type ModalSize = "sm" | "md" | "lg";
 export interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
-  title?: string;
+  title?: React.ReactNode;
   children?: React.ReactNode;
   size?: ModalSize;
   /** Footer content — rendered in a sticky bar at the bottom */
@@ -63,13 +63,13 @@ export function Modal({ isOpen, onClose, title, children, footer, size = "sm", c
         <div
           role="dialog"
           aria-modal="true"
-          aria-label={title}
+          aria-label={typeof title === "string" ? title : "Dialog"}
           onClick={(e) => e.stopPropagation()}
           className={cn(
             "bg-white rounded-lg shadow-2xl flex flex-col max-h-[90vh] pointer-events-auto",
             "transition-all duration-200 ease-out",
             sizeStyles[size],
-            isOpen ? "opacity-100 scale-100" : "opacity-0 scale-95",
+            isOpen ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none",
             className
           )}
         >

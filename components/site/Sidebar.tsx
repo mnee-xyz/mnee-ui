@@ -41,6 +41,12 @@ const navigation: Array<{
       { label: "Alert", href: "/docs/components/alert", status: "in-progress" as const },
       { label: "Skeleton", href: "/docs/components/skeleton", status: "stable" as const },
       { label: "CodeBlock", href: "/docs/components/code-block", status: "in-progress" as const },
+      { label: "TokenIcon", href: "/docs/components/token-icon", status: "in-progress" as const },
+      { label: "AmountDisplay", href: "/docs/components/amount-display", status: "in-progress" as const },
+      { label: "DropdownToken", href: "/docs/components/dropdown-token", status: "in-progress" as const },
+      { label: "SelectList", href: "/docs/components/select-list", status: "in-progress" as const },
+      { label: "DetailRow", href: "/docs/components/detail-row", status: "in-progress" as const },
+      { label: "InputAddress", href: "/docs/components/input-address", status: "in-progress" as const },
     ],
   },
   {
@@ -48,6 +54,7 @@ const navigation: Array<{
     items: [
       { label: "Stripe Integration", href: "/docs/pages/stripe-integration" },
       { label: "Transactions Drawer", href: "/docs/pages/transactions-fees-drawer" },
+      { label: "Convert & Withdraw", href: "/docs/pages/convert-withdraw" },
     ],
   },
 ];
