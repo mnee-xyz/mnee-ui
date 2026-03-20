@@ -19,6 +19,10 @@ export interface InputAddressProps extends Omit<React.HTMLAttributes<HTMLDivElem
   title?: string;
   /** Leading icon — defaults to wallet icon in white circle */
   icon?: React.ReactNode;
+  /** Error message — shows red border and hint text below */
+  error?: string;
+  /** Hint text shown below the pill (only visible when error is set) */
+  hint?: string;
 }
 
 export function InputAddress({
@@ -29,6 +33,8 @@ export function InputAddress({
   placeholder = "Enter address",
   title = "Address",
   icon,
+  error,
+  hint,
   className,
   ...props
 }: InputAddressProps) {
@@ -38,17 +44,19 @@ export function InputAddress({
   const showClear = focused || isFilled;
 
   return (
-    <div className={cn("w-full", className)} {...props}>
+    <div className={cn("w-full flex flex-col gap-1", className)} {...props}>
       {hasLabel && (
-        <p className="text-sm text-[#737373] px-3 mb-1">{label}</p>
+        <p className="text-sm text-[#737373] px-3">{label}</p>
       )}
       <div
         className={cn(
           "flex items-center justify-between w-full h-[66px] px-[13px] py-[13px]",
           "rounded-full border bg-[#f5f5f5] transition-all cursor-text",
-          focused
-            ? "border-brand shadow-[0px_0px_0px_3px_rgba(232,140,31,0.5)]"
-            : "border-surface-border hover:border-brand"
+          error
+            ? "border-error"
+            : focused
+              ? "border-brand shadow-[0px_0px_0px_3px_rgba(232,140,31,0.5)]"
+              : "border-surface-border hover:border-brand"
         )}
         onClick={() => inputRef.current?.focus()}
       >
@@ -73,6 +81,7 @@ export function InputAddress({
                   autoComplete="off"
                   data-1p-ignore
                   data-lpignore="true"
+                  aria-invalid={!!error}
                   value={value}
                   onChange={(e) => onChange(e.target.value)}
                   onFocus={() => setFocused(true)}
@@ -99,6 +108,9 @@ export function InputAddress({
           </button>
         )}
       </div>
+      {error && hint && (
+        <p className="text-sm text-error px-3">{hint}</p>
+      )}
     </div>
   );
 }
