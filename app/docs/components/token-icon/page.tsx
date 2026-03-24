@@ -33,7 +33,7 @@ export default function TokenIconPage() {
       <p className="text-xs font-mono text-gray-400 mb-2">Components</p>
       <div className="flex items-center gap-2.5 mb-3">
         <h1 className="text-3xl font-bold text-gray-900 tracking-tight">TokenIcon</h1>
-        <ComponentStatus status="in-progress" />
+        <ComponentStatus status="stable" />
       </div>
       <p className="text-gray-500 mb-8 leading-relaxed">
         Token and network icon registry. Renders inline SVG icons for crypto tokens
