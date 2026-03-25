@@ -7,8 +7,8 @@ import { Input } from "components/ui/input";
 figma.connect(Input, "https://www.figma.com/design/qzjrgEgx4q7MAU9ypgwp48?node-id=520-3062", {
   props: {
     placeholder: figma.string("Placeholder"),
-    disabled: figma.enum("State", { Disable: true, Default: undefined, Focus: undefined, Error: undefined }),
-    error: figma.enum("State", { Error: "Invalid value", Default: undefined, Focus: undefined, Disable: undefined }),
+    disabled: figma.enum("State", { Disable: true, Default: undefined, Focus: undefined, Error: undefined, "Error (Focus)": undefined }),
+    error: figma.enum("State", { Error: "Invalid value", "Error (Focus)": "Invalid value", Default: undefined, Focus: undefined, Disable: undefined }),
     leadingIcon: figma.boolean("has Leading icon", { true: <span>icon</span>, false: undefined }),
     prefix: figma.boolean("has Prefix", { true: "$", false: undefined }),
     suffix: figma.boolean("has Sufix", { true: "USD", false: undefined }),
