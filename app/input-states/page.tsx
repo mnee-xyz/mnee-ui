@@ -82,21 +82,6 @@ export default function InputStatesPage() {
       render: <Input error="This field is required." placeholder="Email" />,
     },
     {
-      title: "Size: sm",
-      props: `<Input size="sm" placeholder="Small input" />`,
-      render: <Input size="sm" placeholder="Small input" />,
-    },
-    {
-      title: "Size: md (default)",
-      props: `<Input size="md" placeholder="Medium input" />\n// "md" is the default — no need to pass it`,
-      render: <Input size="md" placeholder="Medium input" />,
-    },
-    {
-      title: "Size: lg",
-      props: `<Input size="lg" placeholder="Large input" />`,
-      render: <Input size="lg" placeholder="Large input" />,
-    },
-    {
       title: "Leading Icon",
       props: `<Input\n  leadingIcon={<Mail />}\n  placeholder="Email"\n/>`,
       render: <Input leadingIcon={<Mail />} placeholder="Email" />,
@@ -160,12 +145,11 @@ export default function InputStatesPage() {
       ),
     },
     {
-      title: "Full combo: sm + Icon + Hint + Required",
-      props: `<Input\n  label="Search"\n  size="sm"\n  leadingIcon={<Search />}\n  hint="Press Enter to search."\n  required\n  placeholder="Search..."\n/>`,
+      title: "Full combo: Icon + Hint + Required",
+      props: `<Input\n  label="Search"\n  leadingIcon={<Search />}\n  hint="Press Enter to search."\n  required\n  placeholder="Search..."\n/>`,
       render: (
         <Input
           label="Search"
-          size="sm"
           leadingIcon={<Search />}
           hint="Press Enter to search."
           required
@@ -174,12 +158,11 @@ export default function InputStatesPage() {
       ),
     },
     {
-      title: "Full combo: lg + Icon + Disabled + Required",
-      props: `<Input\n  label="Password"\n  size="lg"\n  leadingIcon={<Lock />}\n  disabled\n  required\n  placeholder="Enter password"\n/>`,
+      title: "Full combo: Icon + Disabled + Required",
+      props: `<Input\n  label="Password"\n  leadingIcon={<Lock />}\n  disabled\n  required\n  placeholder="Enter password"\n/>`,
       render: (
         <Input
           label="Password"
-          size="lg"
           leadingIcon={<Lock />}
           disabled
           required
@@ -237,7 +220,6 @@ export default function InputStatesPage() {
             ["label", "string", "Label shown above the input"],
             ["hint", "string", "Helper text below (gray). Hidden when error is set"],
             ["error", "string", "Error message below (red). Overrides hint. Turns border red"],
-            ["size", '"sm" | "md" | "lg"', 'Controls height & font. Default: "md"'],
             ["prefix", "string", 'Text inside left edge — e.g. "$", "https://"'],
             ["suffix", "string", 'Text inside right edge — e.g. ".com", "USD"'],
             ["leadingIcon", "ReactNode", "Icon inside left edge (before text)"],

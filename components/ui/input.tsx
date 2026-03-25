@@ -1,12 +1,9 @@
 import { cn } from "@/lib/utils";
 
-export type InputSize = "sm" | "md" | "lg";
-
-export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size"> {
+export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   hint?: string;
   error?: string;
-  size?: InputSize;
   prefix?: string;
   suffix?: string;
   leadingIcon?: React.ReactNode;
@@ -15,35 +12,10 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
   action?: React.ReactNode;
 }
 
-const sizeStyles: Record<InputSize, string> = {
-  sm: "rounded-md text-xs",
-  md: "rounded-lg text-sm",
-  lg: "rounded-lg text-base",
-};
-
-const inputPaddingStyles: Record<InputSize, string> = {
-  sm: "py-1.5 px-2.5",
-  md: "py-2 px-3",
-  lg: "py-2.5 px-4",
-};
-
-const addonPaddingStyles: Record<InputSize, string> = {
-  sm: "px-2",
-  md: "px-2.5",
-  lg: "px-3",
-};
-
-const iconSizeStyles: Record<InputSize, string> = {
-  sm: "[&>svg]:size-3.5",
-  md: "[&>svg]:size-4",
-  lg: "[&>svg]:size-5",
-};
-
 export function Input({
   label,
   hint,
   error,
-  size = "md",
   className,
   id,
   disabled,
@@ -63,22 +35,21 @@ export function Input({
   const fieldBox = (
     <div
       className={cn(
-        "flex items-center w-full border bg-white transition-colors",
+        "flex items-center w-full rounded-md border bg-white text-base transition-colors",
         "shadow-xs focus-within:ring-[3px] focus-within:ring-brand/50",
         "has-[input:disabled]:pointer-events-none has-[input:disabled]:opacity-50",
         error
           ? "border-error focus-within:border-error focus-within:ring-error/50"
           : "border-gray-300 focus-within:border-brand",
-        sizeStyles[size],
       )}
     >
       {leadingIcon && (
-        <span className={cn("flex items-center pointer-events-none text-gray-400", addonPaddingStyles[size], iconSizeStyles[size])}>
+        <span className="flex items-center pointer-events-none text-gray-400 px-2.5 [&>svg]:size-4">
           {leadingIcon}
         </span>
       )}
       {prefix && (
-        <span className={cn("flex items-center pointer-events-none text-gray-400 select-none", addonPaddingStyles[size])}>
+        <span className="flex items-center pointer-events-none text-gray-400 select-none px-2.5">
           {prefix}
         </span>
       )}
@@ -89,20 +60,19 @@ export function Input({
         aria-invalid={!!error}
         aria-describedby={error ? `${inputId}-error` : hint ? `${inputId}-hint` : undefined}
         className={cn(
-          "flex-1 min-w-0 bg-transparent outline-none placeholder:text-gray-400",
-          inputPaddingStyles[size],
+          "flex-1 min-w-0 bg-transparent outline-none placeholder:text-gray-400 py-2 px-3",
           hasLeading && "pl-1.5",
           hasTrailing && "pr-1.5",
         )}
         {...props}
       />
       {suffix && (
-        <span className={cn("flex items-center pointer-events-none text-gray-400 select-none", addonPaddingStyles[size])}>
+        <span className="flex items-center pointer-events-none text-gray-400 select-none px-2.5">
           {suffix}
         </span>
       )}
       {trailingIcon && (
-        <span className={cn("flex items-center pointer-events-none text-gray-400", addonPaddingStyles[size], iconSizeStyles[size])}>
+        <span className="flex items-center pointer-events-none text-gray-400 px-2.5 [&>svg]:size-4">
           {trailingIcon}
         </span>
       )}

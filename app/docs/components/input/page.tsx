@@ -20,10 +20,6 @@ const snippets = {
   defaultValue="john_doe"
 />`,
 
-  sizes: `<Input size="sm" placeholder="Small" />
-<Input size="md" placeholder="Medium (default)" />
-<Input size="lg" placeholder="Large" />`,
-
   disabled: `<Input label="Read-only field" disabled defaultValue="Cannot edit" />`,
 
   withPrefix: `<Input label="Amount" prefix="$" placeholder="0.00" />`,
@@ -174,16 +170,6 @@ export default function InputPage() {
             error="Username is already taken."
             defaultValue="john_doe"
           />
-        </div>
-      </ComponentPreview>
-
-      {/* Sizes */}
-      <h2 className="text-lg font-semibold text-gray-900 mb-3">Sizes</h2>
-      <ComponentPreview code={snippets.sizes} className="mb-8">
-        <div className="w-64 flex flex-col gap-3">
-          <Input size="sm" placeholder="Small" />
-          <Input size="md" placeholder="Medium (default)" />
-          <Input size="lg" placeholder="Large" />
         </div>
       </ComponentPreview>
 
@@ -432,7 +418,6 @@ export default function InputPage() {
               ["label", "string", "—", "Label text rendered above the input"],
               ["hint", "string", "—", "Helper text shown below (hidden when error is set)"],
               ["error", "string", "—", "Error message; applies error styling and aria-invalid"],
-              ["size", `"sm" | "md" | "lg"`, `"md"`, "Controls height, padding, and font size"],
               ["prefix", "string", "—", `Text adornment inside the left edge of the border (e.g. "$", "https://")`],
               ["suffix", "string", "—", `Text adornment inside the right edge of the border (e.g. "%", ".com")`],
               ["leadingIcon", "ReactNode", "—", "Icon at the left of the input — pass a Lucide icon; size and color are design-system controlled"],
