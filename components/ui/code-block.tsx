@@ -10,6 +10,7 @@ export interface CodeBlockProps {
   code: string;
   language?: string;
   title?: string;
+  filename?: string;
   className?: string;
 }
 
@@ -19,11 +20,10 @@ export function CodeBlock({
   code,
   language = "bash",
   title,
+  filename,
   className,
 }: CodeBlockProps) {
   const [tokens, setTokens] = useState<TokenLine[] | null>(null);
-  const [bg, setBg] = useState("#000000");
-  const [fg, setFg] = useState("#d4d4d4");
   const [copied, setCopied] = useState(false);
   const { showToast } = useToast();
 
@@ -36,8 +36,6 @@ export function CodeBlock({
           theme: "dark-plus",
         });
         setTokens(result.tokens);
-        if (result.bg) setBg(result.bg);
-        if (result.fg) setFg(result.fg);
       } catch {
         // leave tokens null — fallback pre renders raw code
       }
@@ -55,54 +53,48 @@ export function CodeBlock({
   const copyButton = (
     <button
       onClick={handleCopy}
-      className="flex items-center gap-1 bg-gray-700 hover:bg-gray-600 text-gray-200 px-2 py-1 rounded text-xs transition-colors"
+      className="flex items-center gap-1.5 text-gray-400 hover:text-gray-200 text-xs transition-colors"
     >
-      <Copy size={13} />
-      {copied ? "Copied!" : "Copy"}
+      {copied ? "Copied!" : "Copy code"}
+      <Copy size={14} />
     </button>
   );
 
   return (
-    <div
-      className={cn(
-        "relative border border-gray-700 rounded-lg overflow-hidden",
-        className
+    <div className={cn(filename && "flex flex-col gap-2", className)}>
+      {filename && (
+        <div className="text-sm text-slate-600">{filename}</div>
       )}
-    >
-      {title ? (
-        <div className="flex items-center justify-between bg-[#161B22] px-4 py-2 text-sm text-gray-300 border-b border-gray-700">
-          <span className="truncate">{title}</span>
-          {copyButton}
-        </div>
-      ) : (
-        <div className="absolute top-2 right-2 z-10">{copyButton}</div>
-      )}
+      <div className="relative border border-gray-700 rounded-lg overflow-hidden bg-gray-950">
+        {title ? (
+          <div className="flex items-center justify-between bg-gray-900 px-4 py-2 text-sm text-slate-300 border-b border-gray-700">
+            <div className="truncate">{title}</div>
+            {copyButton}
+          </div>
+        ) : (
+          <div className="absolute top-2 right-2 z-10">{copyButton}</div>
+        )}
 
-      {tokens === null ? (
-        <pre
-          className="p-4 overflow-x-auto text-sm font-mono"
-          style={{ background: bg, color: fg }}
-        >
-          <code>{code}</code>
-        </pre>
-      ) : (
-        <pre
-          className="p-4 overflow-x-auto text-sm font-mono !m-0 !rounded-none"
-          style={{ background: bg, color: fg }}
-        >
-          <code>
-            {tokens.map((line, i) => (
-              <span key={i} className="block">
-                {line.map((token, j) => (
-                  <span key={j} style={{ color: token.color }}>
-                    {token.content}
-                  </span>
-                ))}
-              </span>
-            ))}
-          </code>
-        </pre>
-      )}
+        {tokens === null ? (
+          <pre className="p-4 overflow-x-auto text-sm font-mono text-gray-300">
+            <code>{code}</code>
+          </pre>
+        ) : (
+          <pre className="p-4 overflow-x-auto text-sm font-mono text-gray-300 !m-0 !rounded-none">
+            <code>
+              {tokens.map((line, i) => (
+                <div key={i}>
+                  {line.map((token, j) => (
+                    <span key={j} style={{ color: token.color }}>
+                      {token.content}
+                    </span>
+                  ))}
+                </div>
+              ))}
+            </code>
+          </pre>
+        )}
+      </div>
     </div>
   );
 }

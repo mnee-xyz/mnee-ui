@@ -11,6 +11,15 @@ const snippets = {
   code="npm install @mnee-ui/ui"
 />`,
 
+  withFilename: `<CodeBlock
+  filename="globals.css"
+  language="css"
+  code={\`:root {
+  --brand: #D97706;
+  --surface: #ffffff;
+}\`}
+/>`,
+
   javascript: `<CodeBlock
   language="javascript"
   title="Handle payment submission:"
@@ -26,6 +35,11 @@ const snippets = {
   install: `import { CodeBlock } from "@mnee-ui/ui"`,
 };
 
+const cssExample = `:root {
+  --brand: #D97706;
+  --surface: #ffffff;
+}`;
+
 const exampleCode = `async function handleSubmit() {
   const { submittedEl } = await elements.submit();
   if (submittedEl.selectedPaymentMethod === "YOUR_CPMT_ID") {
@@ -40,7 +54,7 @@ export default function CodeBlockPage() {
       <p className="text-xs font-mono text-gray-400 mb-2">Components</p>
       <div className="flex items-center gap-2.5 mb-3">
         <h1 className="text-3xl font-bold text-gray-900 tracking-tight">CodeBlock</h1>
-        <ComponentStatus status="in-progress" />
+        <ComponentStatus status="stable" />
       </div>
       <p className="text-gray-500 mb-8 leading-relaxed">
         Client-side syntax-highlighted code display with title bar and copy button.
@@ -61,6 +75,14 @@ export default function CodeBlockPage() {
       <ComponentPreview code={snippets.withTitle} className="mb-8">
         <div className="w-full">
           <CodeBlock title="Install the package" code="npm install @mnee-ui/ui" />
+        </div>
+      </ComponentPreview>
+
+      {/* With filename */}
+      <h2 className="text-lg font-semibold text-gray-900 mb-3">With filename</h2>
+      <ComponentPreview code={snippets.withFilename} className="mb-8">
+        <div className="w-full">
+          <CodeBlock filename="globals.css" language="css" code={cssExample} />
         </div>
       </ComponentPreview>
 
@@ -97,6 +119,7 @@ export default function CodeBlockPage() {
               ["code", "string", "—", "The code string to highlight and display"],
               ["language", "string", `"bash"`, "Shiki language: bash, javascript, typescript, tsx, jsx"],
               ["title", "string", "—", "Optional header bar label. Also moves copy button to header when set."],
+              ["filename", "string", "—", "Optional filename label displayed above the code block."],
               ["className", "string", "—", "Layout utilities (margin, width)"],
             ].map(([prop, type, def, desc]) => (
               <tr key={prop} className="hover:bg-gray-50">
