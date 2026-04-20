@@ -18,6 +18,8 @@ import { PolygonNetworkIcon } from "./networks/polygon";
 import { ArbitrumNetworkIcon } from "./networks/arbitrum";
 import { TronNetworkIcon } from "./networks/tron";
 import { OptimismNetworkIcon } from "./networks/optimism";
+import { BinanceNetworkIcon } from "./networks/binance";
+import { AvalancheNetworkIcon } from "./networks/avalanche";
 
 export type IconComponent = FC<SVGProps<SVGSVGElement>>;
 
@@ -42,4 +44,6 @@ export const networkIcons: Record<string, IconComponent> = {
   arbitrum: ArbitrumNetworkIcon,
   tron: TronNetworkIcon,
   optimism: OptimismNetworkIcon,
+  binance: BinanceNetworkIcon,
+  avalanche: AvalancheNetworkIcon,
 };

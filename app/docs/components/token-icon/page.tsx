@@ -16,7 +16,9 @@ const snippets = {
 
   network: `<TokenIcon token="USDC" network="base" />
 <TokenIcon token="ETH" network="ethereum" />
-<TokenIcon token="USDC" network="arbitrum" />`,
+<TokenIcon token="USDC" network="arbitrum" />
+<TokenIcon token="BNB" network="binance" />
+<TokenIcon token="AVAX" network="avalanche" />`,
 
   fallback: `<TokenIcon token="AAVE" />
 <TokenIcon token="LINK" />
@@ -69,6 +71,8 @@ export default function TokenIconPage() {
         <TokenIcon token="USDC" network="arbitrum" size="lg" />
         <TokenIcon token="MATIC" network="polygon" size="lg" />
         <TokenIcon token="SOL" network="solana" size="lg" />
+        <TokenIcon token="BNB" network="binance" size="lg" />
+        <TokenIcon token="AVAX" network="avalanche" size="lg" />
       </ComponentPreview>
 
       <h2 className="text-lg font-semibold text-gray-900 mb-3">Fallback (unregistered tokens)</h2>

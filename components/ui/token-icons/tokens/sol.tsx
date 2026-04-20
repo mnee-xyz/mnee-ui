@@ -10,19 +10,19 @@ export function SolIcon(props: SVGProps<SVGSVGElement>) {
       <path d="M31.6478 18.2474C31.463 18.0626 31.2089 17.9548 30.9395 17.9548H6.50057C6.05399 17.9548 5.83069 18.4938 6.14638 18.8094L10.9741 23.6372C11.1589 23.822 11.413 23.9297 11.6825 23.9297H36.1214C36.5679 23.9297 36.7912 23.3908 36.4755 23.0751L31.6478 18.2474Z" fill="url(#paint2_linear_16117_21)"/>
       </g>
       <defs>
-      <linearGradient x1="33.7867" y1="6.11599" x2="16.8731" y2="38.5124" gradientUnits="userSpaceOnUse">
+      <linearGradient id="paint0_linear_16117_21" x1="33.7867" y1="6.11599" x2="16.8731" y2="38.5124" gradientUnits="userSpaceOnUse">
       <stop stopColor="#00FFA3"/>
       <stop offset="1" stopColor="#DC1FFF"/>
       </linearGradient>
-      <linearGradient x1="26.3912" y1="2.25495" x2="9.47751" y2="34.6514" gradientUnits="userSpaceOnUse">
+      <linearGradient id="paint1_linear_16117_21" x1="26.3912" y1="2.25495" x2="9.47751" y2="34.6514" gradientUnits="userSpaceOnUse">
       <stop stopColor="#00FFA3"/>
       <stop offset="1" stopColor="#DC1FFF"/>
       </linearGradient>
-      <linearGradient x1="30.0654" y1="4.17322" x2="13.1517" y2="36.5697" gradientUnits="userSpaceOnUse">
+      <linearGradient id="paint2_linear_16117_21" x1="30.0654" y1="4.17322" x2="13.1517" y2="36.5697" gradientUnits="userSpaceOnUse">
       <stop stopColor="#00FFA3"/>
       <stop offset="1" stopColor="#DC1FFF"/>
       </linearGradient>
-      <clipPath>
+      <clipPath id="clip0_16117_21">
       <rect width="30.6217" height="24" fill="white" transform="translate(6 9)"/>
       </clipPath>
       </defs>

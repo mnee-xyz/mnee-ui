@@ -10,9 +10,9 @@ export interface TokenIconProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const sizeStyles: Record<TokenIconSize, { container: string; icon: string; badge: string; badgeIcon: string }> = {
-  sm: { container: "w-5 h-5", icon: "w-5 h-5", badge: "w-2.5 h-2.5 -bottom-px -right-px", badgeIcon: "w-2.5 h-2.5" },
-  md: { container: "w-7 h-7", icon: "w-7 h-7", badge: "w-3 h-3 -bottom-px -right-px", badgeIcon: "w-3 h-3" },
-  lg: { container: "w-8 h-8", icon: "w-8 h-8", badge: "w-3.5 h-3.5 -bottom-px -right-px", badgeIcon: "w-3.5 h-3.5" },
+  sm: { container: "w-5 h-5", icon: "w-5 h-5", badge: "w-2.5 h-2.5", badgeIcon: "w-2.5 h-2.5" },
+  md: { container: "w-7 h-7", icon: "w-7 h-7", badge: "w-3 h-3", badgeIcon: "w-3 h-3" },
+  lg: { container: "w-8 h-8", icon: "w-8 h-8", badge: "w-3.5 h-3.5", badgeIcon: "w-3.5 h-3.5" },
 };
 
 const fallbackColors = [
@@ -58,7 +58,10 @@ export function TokenIcon({
         </span>
       )}
       {NetworkSvg && (
-        <div className={cn("absolute rounded-full overflow-hidden", styles.badge)}>
+        <div
+          className={cn("absolute rounded-full overflow-hidden", styles.badge)}
+          style={{ bottom: -1, right: -1 }}
+        >
           <NetworkSvg className="w-full h-full" />
         </div>
       )}

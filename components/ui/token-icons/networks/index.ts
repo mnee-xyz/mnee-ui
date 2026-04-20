@@ -5,3 +5,5 @@ export { PolygonNetworkIcon } from "./polygon";
 export { ArbitrumNetworkIcon } from "./arbitrum";
 export { TronNetworkIcon } from "./tron";
 export { OptimismNetworkIcon } from "./optimism";
+export { BinanceNetworkIcon } from "./binance";
+export { AvalancheNetworkIcon } from "./avalanche";

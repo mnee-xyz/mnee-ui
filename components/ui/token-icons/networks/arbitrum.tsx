@@ -15,7 +15,7 @@ export function ArbitrumNetworkIcon(props: SVGProps<SVGSVGElement>) {
       </g>
       <rect x="0.665078" y="0.665017" width="17.33" height="17.33" rx="8.665" stroke="white" strokeWidth="1.33"/>
       <defs>
-      <clipPath>
+      <clipPath id="clip0_16107_38">
       <rect x="1.33008" y="1.33002" width="16" height="16" rx="8" fill="white"/>
       </clipPath>
       </defs>

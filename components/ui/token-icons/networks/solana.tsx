@@ -11,7 +11,7 @@ export function SolanaNetworkIcon(props: SVGProps<SVGSVGElement>) {
       <path d="M13.3864 8.28138C13.316 8.21099 13.2192 8.16992 13.1165 8.16992H3.80649C3.63636 8.16992 3.55129 8.37525 3.67156 8.49551L5.51069 10.3346C5.58109 10.405 5.67788 10.4461 5.78054 10.4461H15.0906C15.2607 10.4461 15.3458 10.2408 15.2255 10.1205L13.3864 8.28138Z" fill="white"/>
       </g>
       <defs>
-      <clipPath>
+      <clipPath id="clip0_16055_23">
       <rect width="11.6654" height="9.14286" fill="white" transform="translate(3.61572 4.75861)"/>
       </clipPath>
       </defs>
