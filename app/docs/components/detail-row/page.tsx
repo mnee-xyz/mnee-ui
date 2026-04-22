@@ -106,7 +106,7 @@ export default function DetailRowPage() {
       <p className="text-xs font-mono text-gray-400 mb-2">Components</p>
       <div className="flex items-center gap-2.5 mb-3">
         <h1 className="text-3xl font-bold text-gray-900 tracking-tight">DetailRow</h1>
-        <ComponentStatus status="in-progress" />
+        <ComponentStatus status="stable" />
       </div>
       <p className="text-gray-500 mb-8 leading-relaxed">
         Key-value pair row for confirmation screens and receipts.
