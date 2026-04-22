@@ -9,7 +9,8 @@ const snippets = {
   variants: `<DetailRow label="Token" value="USDC" action={<TokenIcon token="USDC" size="sm" />} />
 <DetailRow label="Status" value="Completed" variant="success" />
 <DetailRow label="Est. network fee" value="~$0.02" />
-<DetailRow label="Recipient receives" value="~119.98 USDC" variant="brand" />`,
+<DetailRow label="Recipient receives" value="~119.98 USDC" variant="brand" />
+<DetailRow variant="loading" />`,
 
   card: `{/* Confirmation card — uses DetailRow's \`action\` slot for trailing icons */}
 <div className="rounded-xl border border-[#e5e5e5] overflow-hidden">
@@ -124,6 +125,7 @@ export default function DetailRowPage() {
           <DetailRow label="Status" value="Completed" variant="success" />
           <DetailRow label="Est. network fee" value="~$0.02" />
           <DetailRow label="Recipient receives" value="~119.98 USDC" variant="brand" />
+          <DetailRow variant="loading" />
         </div>
       </ComponentPreview>
 
@@ -198,10 +200,10 @@ export default function DetailRowPage() {
           </thead>
           <tbody>
             {[
-              ["label", "string", "—", "Left-side label text"],
-              ["value", "React.ReactNode", "—", "Right-side value (string, icon+text, etc)"],
+              ["label", "string", "—", "Left-side label text (omit for loading)"],
+              ["value", "React.ReactNode", "—", "Right-side value (omit for loading)"],
               ["action", "React.ReactNode", "—", "Optional trailing slot (icon, copy button, token badge)"],
-              ["variant", '"default" | "success" | "muted" | "brand"', '"default"', "Value color variant"],
+              ["variant", '"default" | "success" | "muted" | "brand" | "loading"', '"default"', "Value color variant; loading renders skeleton pills"],
               ["className", "string", "—", "Additional container classes"],
             ].map(([prop, type, def, desc]) => (
               <tr key={prop} className="hover:bg-gray-50">

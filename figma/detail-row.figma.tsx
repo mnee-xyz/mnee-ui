@@ -52,3 +52,15 @@ figma.connect(DetailRow, FIGMA_URL, {
     },
   ],
 });
+
+// ─── 3. DetailRow loading skeleton ───────────────────────────────────────────
+figma.connect(DetailRow, FIGMA_URL, {
+  variant: { Variant: "Loading" },
+  example: () => <DetailRow variant="loading" />,
+  links: [
+    {
+      name: "Documentation",
+      url: "https://mnee-ui.vercel.app/docs/components/detail-row",
+    },
+  ],
+});
