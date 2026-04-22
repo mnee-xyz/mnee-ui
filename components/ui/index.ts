@@ -20,6 +20,7 @@ export * from "./amount-display";
 export * from "./dropdown-token";
 export * from "./select-list";
 export * from "./spinner";
+export * from "./brik-spinner";
 export * from "./detail-row";
 export * from "./confirm-card";
 export * from "./input-address";

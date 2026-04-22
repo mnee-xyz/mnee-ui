@@ -1,6 +1,6 @@
 import { Spinner } from "@/components/ui/spinner";
+import { BrikSpinner } from "@/components/ui/brik-spinner";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { ComponentPreview } from "@/components/site/ComponentPreview";
 import { CodeBlock } from "@/components/site/CodeBlock";
 import { ComponentStatus } from "@/components/site/ComponentStatus";
@@ -23,9 +23,9 @@ const snippets = {
   variants: `<Spinner variant="circle" size="lg" />
 <Spinner variant="loader" size="lg" />`,
 
-  inButton: `<Button loading>Loading...</Button>
-<Button variant="secondary" loading>Loading...</Button>
-<Button variant="outline" loading>Loading...</Button>`,
+  inButton: `<BrikSpinner />
+<BrikSpinner variant="secondary" />
+<BrikSpinner variant="outline" />`,
 
   inBadge: `import { Spinner } from "@mnee-ui/ui"
 
@@ -130,15 +130,17 @@ export default function SpinnerPage() {
       </ComponentPreview>
 
       {/* In Buttons */}
-      <h2 className="text-lg font-semibold text-gray-900 mb-3">In Buttons</h2>
+      <h2 className="text-lg font-semibold text-gray-900 mb-3">BrikSpinner</h2>
       <p className="text-gray-500 text-sm mb-3 leading-relaxed">
-        Use the <code className="font-mono text-xs">loading</code> prop on{" "}
-        <code className="font-mono text-xs">Button</code> — no manual Spinner needed.
+        A dedicated loading-button component. Always in the loading state — no toggle needed.
+        Supports <code className="font-mono text-xs">primary</code>,{" "}
+        <code className="font-mono text-xs">secondary</code>, and{" "}
+        <code className="font-mono text-xs">outline</code> variants.
       </p>
       <ComponentPreview code={snippets.inButton} className="mb-10">
-        <Button loading>Loading...</Button>
-        <Button variant="secondary" loading>Loading...</Button>
-        <Button variant="outline" loading>Loading...</Button>
+        <BrikSpinner />
+        <BrikSpinner variant="secondary" />
+        <BrikSpinner variant="outline" />
       </ComponentPreview>
 
       {/* In Badges */}

@@ -1,7 +1,7 @@
 import figma from "@figma/code-connect";
 import { Spinner } from "components/ui/spinner";
 import { Badge } from "components/ui/badge";
-import { Button } from "components/ui/button";
+import { BrikSpinner } from "components/ui/brik-spinner";
 
 const DOCS_URL = "https://mnee-ui.vercel.app/docs/components/spinner";
 
@@ -83,11 +83,11 @@ figma.connect(
   }
 );
 
-// ─── Brik — loading button (component set 1202:699, named "Brik") ─────────────
+// ─── Brik — BrikSpinner (component set 1202:699, named "Brik") ────────────────
 // Distinct from the regular Button component set (73:3681).
-// Shows Button in its loading/disabled state with an inline spinner.
+// Maps to the dedicated BrikSpinner code component.
 figma.connect(
-  Button,
+  BrikSpinner,
   "https://www.figma.com/design/qzjrgEgx4q7MAU9ypgwp48?node-id=1202-699",
   {
     props: {
@@ -98,9 +98,7 @@ figma.connect(
       }),
     },
     example: ({ variant }) => (
-      <Button variant={variant} loading>
-        Loading...
-      </Button>
+      <BrikSpinner variant={variant} />
     ),
     links: [{ name: "Documentation", url: DOCS_URL }],
   }
