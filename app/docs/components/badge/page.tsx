@@ -2,26 +2,36 @@ import { Badge } from "@/components/ui/badge";
 import { ComponentPreview } from "@/components/site/ComponentPreview";
 import { CodeBlock } from "@/components/site/CodeBlock";
 import { ComponentStatus } from "@/components/site/ComponentStatus";
+import { CircleCheck } from "lucide-react";
 
 const snippets = {
-  variants: `<Badge variant="success">Completed</Badge>
+  variants: `<Badge variant="default">Default</Badge>
+<Badge variant="secondary">Secondary</Badge>
+<Badge variant="destructive">Destructive</Badge>
+<Badge variant="outline">Outline</Badge>
+<Badge variant="success">Completed</Badge>
 <Badge variant="warning">Pending</Badge>
-<Badge variant="error">Failed</Badge>
-<Badge variant="info">Info</Badge>
-<Badge variant="default">Default</Badge>
-<Badge variant="brand">MNEE Pay</Badge>`,
+<Badge variant="info">Info</Badge>`,
+
+  withIcon: `import { CircleCheck } from "lucide-react"
+
+<Badge variant="success" icon={<CircleCheck className="size-3" />}>Completed</Badge>
+<Badge variant="warning" icon={<CircleCheck className="size-3" />}>Pending</Badge>
+<Badge variant="destructive" icon={<CircleCheck className="size-3" />}>Failed</Badge>`,
 
   usage: `import { Badge } from "@mnee-ui/ui"
+import { CircleCheck } from "lucide-react"
 
-// Map transaction status to badge variant
 const statusVariant = {
   COMPLETED: "success",
-  VERIFIED:  "success",
   PENDING:   "warning",
-  FAILED:    "error",
+  FAILED:    "destructive",
 } as const
 
-<Badge variant={statusVariant[tx.status] ?? "default"}>
+<Badge
+  variant={statusVariant[tx.status] ?? "secondary"}
+  icon={<CircleCheck className="size-3" />}
+>
   {tx.status}
 </Badge>`,
 };
@@ -32,26 +42,40 @@ export default function BadgePage() {
       <p className="text-xs font-mono text-gray-400 mb-2">Components</p>
       <div className="flex items-center gap-2.5 mb-3">
         <h1 className="text-3xl font-bold text-gray-900 tracking-tight">Badge</h1>
-        <ComponentStatus status="in-progress" />
+        <ComponentStatus status="stable" />
       </div>
-      <p className="text-gray-500 mb-4 leading-relaxed">
-        Compact status labels. Used in the transaction table to communicate payment status.
-        Solid-color pills with white text — a visual replica of the product&apos;s status indicators.
+      <p className="text-gray-500 mb-8 leading-relaxed">
+        Compact labels for status, category, and metadata. Follows the shadcn Badge system
+        with MNEE semantic extensions. Accepts an optional <code className="font-mono text-xs">icon</code> slot
+        for leading icons.
       </p>
-      <div className="mb-8 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
-        <strong>Design ownership:</strong> Badge colors are defined by the UX Design team (Federico).
-        Do not override variants with ad-hoc Tailwind classes — use the <code className="font-mono text-xs">variant</code> prop.
-      </div>
 
-      {/* All variants */}
+      {/* Variants */}
       <h2 className="text-lg font-semibold text-gray-900 mb-3">Variants</h2>
       <ComponentPreview code={snippets.variants} className="mb-10">
+        <Badge variant="default">Default</Badge>
+        <Badge variant="secondary">Secondary</Badge>
+        <Badge variant="destructive">Destructive</Badge>
+        <Badge variant="outline">Outline</Badge>
         <Badge variant="success">Completed</Badge>
         <Badge variant="warning">Pending</Badge>
-        <Badge variant="error">Failed</Badge>
         <Badge variant="info">Info</Badge>
-        <Badge variant="default">Default</Badge>
-        <Badge variant="brand">MNEE Pay</Badge>
+      </ComponentPreview>
+
+      {/* With icon */}
+      <h2 className="text-lg font-semibold text-gray-900 mb-3">With icon</h2>
+      <p className="text-gray-500 text-sm mb-3 leading-relaxed">
+        Pass any Lucide icon (or any node) to the <code className="font-mono text-xs">icon</code> prop.
+        It renders before the label and inherits the variant&apos;s text color.
+      </p>
+      <ComponentPreview code={snippets.withIcon} className="mb-10">
+        <Badge variant="success"  icon={<CircleCheck className="size-3" />}>Completed</Badge>
+        <Badge variant="warning"  icon={<CircleCheck className="size-3" />}>Pending</Badge>
+        <Badge variant="destructive" icon={<CircleCheck className="size-3" />}>Failed</Badge>
+        <Badge variant="info"     icon={<CircleCheck className="size-3" />}>Info</Badge>
+        <Badge variant="default"  icon={<CircleCheck className="size-3" />}>Default</Badge>
+        <Badge variant="secondary" icon={<CircleCheck className="size-3" />}>Secondary</Badge>
+        <Badge variant="outline"  icon={<CircleCheck className="size-3" />}>Outline</Badge>
       </ComponentPreview>
 
       {/* Usage */}
@@ -64,17 +88,17 @@ export default function BadgePage() {
         <table className="w-full text-sm border-collapse">
           <thead>
             <tr>
-              <th className="text-left px-4 py-2.5 border-b border-[#E5E5E5] text-xs font-semibold text-gray-500 uppercase bg-gray-50">Prop</th>
-              <th className="text-left px-4 py-2.5 border-b border-[#E5E5E5] text-xs font-semibold text-gray-500 uppercase bg-gray-50">Type</th>
-              <th className="text-left px-4 py-2.5 border-b border-[#E5E5E5] text-xs font-semibold text-gray-500 uppercase bg-gray-50">Default</th>
-              <th className="text-left px-4 py-2.5 border-b border-[#E5E5E5] text-xs font-semibold text-gray-500 uppercase bg-gray-50">Description</th>
+              {["Prop", "Type", "Default", "Description"].map(h => (
+                <th key={h} className="text-left px-4 py-2.5 border-b border-[#E5E5E5] text-xs font-semibold text-gray-500 uppercase bg-gray-50">{h}</th>
+              ))}
             </tr>
           </thead>
           <tbody>
             {[
-              ["variant", `"success" | "warning" | "error" | "info" | "default" | "brand"`, `"default"`, "Semantic color"],
-              ["children", "React.ReactNode", "—", "Badge label text"],
-              ["className", "string", "—", "Layout utilities only (margin, padding, width)"],
+              ["variant", `"default" | "secondary" | "destructive" | "outline" | "success" | "warning" | "info"`, `"default"`, "Visual style"],
+              ["icon",    "React.ReactNode", "—", "Leading icon, e.g. <CircleCheck className=\"size-3\" />"],
+              ["children","React.ReactNode", "—", "Badge label"],
+              ["className","string",         "—", "Layout overrides (margin, width)"],
             ].map(([prop, type, def, desc]) => (
               <tr key={prop} className="hover:bg-gray-50">
                 <td className="px-4 py-2.5 border-b border-[#E5E5E5] font-mono text-xs text-gray-800">{prop}</td>
@@ -93,19 +117,20 @@ export default function BadgePage() {
         <table className="w-full text-sm border-collapse">
           <thead>
             <tr>
-              <th className="text-left px-4 py-2.5 border-b border-[#E5E5E5] text-xs font-semibold text-gray-500 uppercase bg-gray-50">Variant</th>
-              <th className="text-left px-4 py-2.5 border-b border-[#E5E5E5] text-xs font-semibold text-gray-500 uppercase bg-gray-50">Background</th>
-              <th className="text-left px-4 py-2.5 border-b border-[#E5E5E5] text-xs font-semibold text-gray-500 uppercase bg-gray-50">Text</th>
+              {["Variant", "Background", "Text"].map(h => (
+                <th key={h} className="text-left px-4 py-2.5 border-b border-[#E5E5E5] text-xs font-semibold text-gray-500 uppercase bg-gray-50">{h}</th>
+              ))}
             </tr>
           </thead>
           <tbody>
             {[
-              ["success", "bg-success (#15803D)", "text-white"],
-              ["warning", "bg-warning (#D97706)", "text-white"],
-              ["error",   "bg-red-600 (#DC2626)", "text-white"],
-              ["info",    "bg-info (#2563EB)",    "text-white"],
-              ["default", "bg-gray-600 (#4B5563)", "text-white"],
-              ["brand",   "bg-brand (#D97706)",   "text-white"],
+              ["default",     "bg-brand (#D97706)",          "text-white"],
+              ["secondary",   "#f5f5f5",                     "#0a0a0a"],
+              ["destructive", "bg-error (#B91C1C)",           "text-white"],
+              ["outline",     "transparent",                 "#0a0a0a (border: surface-border)"],
+              ["success",     "bg-success (#15803D)",         "text-white"],
+              ["warning",     "bg-surface-border (#E5E5E5)", "#737373"],
+              ["info",        "#0d74ce",                     "text-white"],
             ].map(([variant, bg, text]) => (
               <tr key={variant} className="hover:bg-gray-50">
                 <td className="px-4 py-2.5 border-b border-[#E5E5E5] font-mono text-xs text-gray-800">{variant}</td>

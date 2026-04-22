@@ -74,7 +74,7 @@ const ROWS = [
   { id: "tx_001", name: "Alice Johnson",  status: "success" as const, amount: "$1,200.00", date: "Feb 24, 2026" },
   { id: "tx_002", name: "Bob Martinez",   status: "warning" as const, amount: "$340.50",   date: "Feb 23, 2026" },
   { id: "tx_003", name: "Carol Lee",      status: "success" as const, amount: "$5,780.00", date: "Feb 22, 2026" },
-  { id: "tx_004", name: "David Kim",      status: "error"   as const, amount: "$90.00",    date: "Feb 21, 2026" },
+  { id: "tx_004", name: "David Kim",      status: "destructive" as const, amount: "$90.00",    date: "Feb 21, 2026" },
 ];
 
 type SortDir = "asc" | "desc" | null;
