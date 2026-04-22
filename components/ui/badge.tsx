@@ -1,23 +1,28 @@
 import { cn } from "@/lib/utils";
 
-export type BadgeVariant = "success" | "warning" | "error" | "info" | "default" | "brand";
+export type BadgeVariant =
+  | "default" | "secondary" | "destructive" | "outline"
+  | "success"  | "warning"   | "info";
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
   variant?: BadgeVariant;
+  icon?: React.ReactNode;
   children?: React.ReactNode;
 }
 
 const variantStyles: Record<BadgeVariant, string> = {
-  success: "bg-success text-white",
-  warning: "bg-warning text-white",
-  error:   "bg-red-600 text-white",
-  info:    "bg-info text-white",
-  default: "bg-gray-600 text-white",
-  brand:   "bg-brand text-white",
+  default:     "bg-brand text-white",
+  secondary:   "bg-[#f5f5f5] text-[#0a0a0a]",
+  destructive: "bg-error text-white",
+  outline:     "border border-surface-border bg-transparent text-[#0a0a0a]",
+  success:     "bg-success text-white",
+  warning:     "bg-surface-border text-[#737373]",
+  info:        "bg-[#0d74ce] text-white",
 };
 
 export function Badge({
   variant = "default",
+  icon,
   className,
   children,
   ...props
@@ -25,13 +30,14 @@ export function Badge({
   return (
     <span
       className={cn(
-        "inline-flex items-center justify-center px-2.5 py-0.5 rounded-lg",
+        "inline-flex items-center gap-1 px-2.5 h-[22px] rounded-lg",
         "text-xs font-medium leading-4 whitespace-nowrap",
         variantStyles[variant],
         className
       )}
       {...props}
     >
+      {icon}
       {children}
     </span>
   );

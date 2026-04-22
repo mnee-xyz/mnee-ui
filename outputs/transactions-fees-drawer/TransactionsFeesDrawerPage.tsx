@@ -164,12 +164,12 @@ const MOCK_TRANSACTIONS: MockTransaction[] = [
 // ─── Badge helpers ────────────────────────────────────────────────────────────
 
 const typeBadgeVariant = (type: TxType): BadgeVariant =>
-  type === "PAYMENT" ? "brand" : "default";
+  type === "PAYMENT" ? "default" : "secondary";
 
 const statusBadgeVariant = (status: TxStatus): BadgeVariant => {
   if (status === "COMPLETED") return "success";
   if (status === "PENDING") return "warning";
-  return "error";
+  return "destructive";
 };
 
 const typeLabel = (type: TxType) => (type === "PAYMENT" ? "Payment" : "Send");

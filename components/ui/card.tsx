@@ -20,7 +20,7 @@ type ModuleCardProps = {
   variant: "module";
   title: string;
   description?: string;
-  status?: "success" | "warning" | "error" | "info" | "default";
+  status?: "success" | "warning" | "destructive" | "info" | "default";
   statusLabel?: string;
   onEdit?: () => void;
   onView?: () => void;
