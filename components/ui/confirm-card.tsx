@@ -18,6 +18,7 @@ export interface ConfirmCardProps extends React.HTMLAttributes<HTMLDivElement> {
   belowDivider?: ConfirmCardRow[];
   state?: ConfirmCardState;
   skeletonRowCount?: number;
+  skeletonAboveDivider?: number;
 }
 
 export function ConfirmCard({
@@ -27,6 +28,7 @@ export function ConfirmCard({
   belowDivider,
   state = "default",
   skeletonRowCount = 5,
+  skeletonAboveDivider = 3,
   className,
   ...props
 }: ConfirmCardProps) {
@@ -55,9 +57,17 @@ export function ConfirmCard({
       {/* Body */}
       <div className={cn("flex flex-col gap-3 p-4", isLoading && "animate-pulse")}>
         {isLoading
-          ? Array.from({ length: skeletonRowCount }).map((_, i) => (
-              <DetailRow key={i} variant="loading" />
-            ))
+          ? (
+            <>
+              {Array.from({ length: skeletonAboveDivider }).map((_, i) => (
+                <DetailRow key={`top-${i}`} variant="loading" />
+              ))}
+              <div className="border-t border-[#e5e5e5]" />
+              {Array.from({ length: skeletonRowCount - skeletonAboveDivider }).map((_, i) => (
+                <DetailRow key={`bot-${i}`} variant="loading" />
+              ))}
+            </>
+          )
           : (
             <>
               {rows.map((row, i) => (
