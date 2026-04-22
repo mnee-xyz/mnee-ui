@@ -18,7 +18,7 @@ const sizeMap: Record<SpinnerSize, number> = {
 };
 
 const colorStyles: Record<SpinnerColor, string> = {
-  default: "text-[#0a0a0a]",
+  default: "text-inherit",
   brand:   "text-brand",
   muted:   "text-muted",
   success: "text-[#22c55e]",
