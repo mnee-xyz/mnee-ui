@@ -19,6 +19,7 @@ export * from "./amount-display";
 export * from "./dropdown-token";
 export * from "./select-list";
 export * from "./detail-row";
+export * from "./confirm-card";
 export * from "./input-address";
 
 export type { LucideIcon, LucideProps } from "lucide-react";
