@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 
-export type DetailRowVariant = "default" | "success" | "error" | "muted" | "brand";
+export type DetailRowVariant = "default" | "success" | "muted" | "brand";
 
 export interface DetailRowProps extends React.HTMLAttributes<HTMLDivElement> {
   label: string;
@@ -12,7 +12,6 @@ export interface DetailRowProps extends React.HTMLAttributes<HTMLDivElement> {
 const valueStyles: Record<DetailRowVariant, string> = {
   default: "text-gray-900 font-medium",
   success: "text-success font-medium",
-  error: "text-error font-medium",
   muted: "text-gray-900 font-medium",
   brand: "text-brand font-semibold",
 };

@@ -4,7 +4,7 @@ import { tokenIcons, networkIcons } from "./token-icons/registry";
 export type TokenIconSize = "sm" | "md" | "lg";
 
 export interface TokenIconProps extends React.HTMLAttributes<HTMLDivElement> {
-  token: string;
+  token?: string;
   network?: string;
   size?: TokenIconSize;
 }
@@ -36,8 +36,21 @@ export function TokenIcon({
   ...props
 }: TokenIconProps) {
   const styles = sizeStyles[size];
-  const TokenSvg = tokenIcons[token.toLowerCase()];
+  const TokenSvg = token ? tokenIcons[token.toLowerCase()] : null;
   const NetworkSvg = network ? networkIcons[network.toLowerCase()] : null;
+
+  // Network-only mode: render the chain icon as the primary circle, no badge overlay.
+  if (!token && NetworkSvg) {
+    return (
+      <div className={cn("relative inline-flex shrink-0", styles.container, className)} {...props}>
+        <div className={cn("rounded-full overflow-hidden", styles.icon)}>
+          <NetworkSvg className="w-full h-full" />
+        </div>
+      </div>
+    );
+  }
+
+  const label = token ?? "?";
 
   return (
     <div className={cn("relative inline-flex shrink-0", styles.container, className)} {...props}>
@@ -51,13 +64,13 @@ export function TokenIcon({
             "flex items-center justify-center rounded-full text-white font-semibold",
             size === "sm" ? "text-[8px]" : size === "md" ? "text-[10px]" : "text-xs",
             styles.icon,
-            getFallbackColor(token)
+            getFallbackColor(label)
           )}
         >
-          {token.slice(0, 2).toUpperCase()}
+          {label.slice(0, 2).toUpperCase()}
         </span>
       )}
-      {NetworkSvg && (
+      {NetworkSvg && token && (
         <div
           className={cn("absolute rounded-full overflow-hidden", styles.badge)}
           style={{ bottom: -1, right: -1 }}
