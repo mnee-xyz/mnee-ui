@@ -29,7 +29,7 @@ const snippets = {
 
   inBadge: `import { Spinner } from "@mnee-ui/ui"
 
-<Badge variant="default"   icon={<Spinner size="sm" color="brand" />}>Syncing</Badge>
+<Badge variant="default"   icon={<Spinner size="sm" />}>Syncing</Badge>
 <Badge variant="secondary" icon={<Spinner size="sm" />}>Updating</Badge>
 <Badge variant="outline"   icon={<Spinner size="sm" />}>Processing</Badge>`,
 
@@ -150,7 +150,7 @@ export default function SpinnerPage() {
         <code className="font-mono text-xs">icon</code> prop for inline loading badges.
       </p>
       <ComponentPreview code={snippets.inBadge} className="mb-10">
-        <Badge variant="default" icon={<Spinner size="sm" color="brand" />}>Syncing</Badge>
+        <Badge variant="default" icon={<Spinner size="sm" />}>Syncing</Badge>
         <Badge variant="secondary" icon={<Spinner size="sm" />}>Updating</Badge>
         <Badge variant="outline" icon={<Spinner size="sm" />}>Processing</Badge>
       </ComponentPreview>
