@@ -1,35 +1,86 @@
+/* Tailwind v4: registers tokens so all color utilities are auto-generated */
 @theme {
-  /* Brand — amber */
   --color-brand:          #D97706;
   --color-brand-dark:     #B45309;
-
-  /* Success */
   --color-success:        #15803D;
   --color-success-bg:     #DCFCE7;
   --color-success-fg:     #14532D;
-
-  /* Warning */
   --color-warning:        #D97706;
   --color-warning-bg:     #FEF3C7;
   --color-warning-fg:     #92400E;
-
-  /* Error */
   --color-error:          #B91C1C;
   --color-error-bg:       #FEE2E2;
   --color-error-fg:       #991B1B;
-
-  /* Info */
   --color-info:           #1D4ED8;
   --color-info-bg:        #DBEAFE;
   --color-info-fg:        #1E3A8A;
-
-  /* Surface */
   --color-surface:        #ffffff;
   --color-surface-border: #E5E5E5;
   --color-muted:          #6B7280;
   --color-muted-bg:       #F9FAFB;
-
-  /* Typography */
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
   --font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", monospace;
 }
+
+/* Tailwind v3 / plain CSS: CSS custom properties at :root */
+:root {
+  --color-brand:          #D97706;
+  --color-brand-dark:     #B45309;
+  --color-success:        #15803D;
+  --color-success-bg:     #DCFCE7;
+  --color-success-fg:     #14532D;
+  --color-warning:        #D97706;
+  --color-warning-bg:     #FEF3C7;
+  --color-warning-fg:     #92400E;
+  --color-error:          #B91C1C;
+  --color-error-bg:       #FEE2E2;
+  --color-error-fg:       #991B1B;
+  --color-info:           #1D4ED8;
+  --color-info-bg:        #DBEAFE;
+  --color-info-fg:        #1E3A8A;
+  --color-surface:        #ffffff;
+  --color-surface-border: #E5E5E5;
+  --color-muted:          #6B7280;
+  --color-muted-bg:       #F9FAFB;
+}
+
+/* Explicit utility classes — work in Tailwind v3, v4, or any framework */
+.text-brand        { color: #D97706; }
+.text-brand-dark   { color: #B45309; }
+.text-success      { color: #15803D; }
+.text-warning      { color: #D97706; }
+.text-error        { color: #B91C1C; }
+.text-info         { color: #1D4ED8; }
+.text-muted        { color: #6B7280; }
+
+.bg-brand          { background-color: #D97706; }
+.bg-success        { background-color: #15803D; }
+.bg-success-bg     { background-color: #DCFCE7; }
+.bg-warning        { background-color: #D97706; }
+.bg-warning-bg     { background-color: #FEF3C7; }
+.bg-error          { background-color: #B91C1C; }
+.bg-error-bg       { background-color: #FEE2E2; }
+.bg-info           { background-color: #1D4ED8; }
+.bg-info-bg        { background-color: #DBEAFE; }
+.bg-muted-bg       { background-color: #F9FAFB; }
+
+.border-brand      { border-color: #D97706; }
+.border-success    { border-color: #15803D; }
+.border-warning    { border-color: #D97706; }
+.border-error      { border-color: #B91C1C; }
+.border-info       { border-color: #1D4ED8; }
+
+/* Opacity variants used by Banner and Alert */
+.border-info\/20    { border-color: rgb(29 78 216 / 0.2); }
+.border-success\/20 { border-color: rgb(21 128 61 / 0.2); }
+.border-warning\/20 { border-color: rgb(215 119 6 / 0.2); }
+.border-error\/20   { border-color: rgb(185 28 28 / 0.2); }
+.border-error\/40   { border-color: rgb(185 28 28 / 0.4); }
+.border-success\/40 { border-color: rgb(21 128 61 / 0.4); }
+.text-success\/80   { color: rgb(21 128 61 / 0.8); }
+.text-info\/80      { color: rgb(29 78 216 / 0.8); }
+.text-warning\/80   { color: rgb(215 119 6 / 0.8); }
+.text-error\/80     { color: rgb(185 28 28 / 0.8); }
+
+/* Hover states */
+.hover\:text-brand-dark:hover { color: #B45309; }
