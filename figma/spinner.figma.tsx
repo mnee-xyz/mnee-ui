@@ -1,5 +1,7 @@
 import figma from "@figma/code-connect";
 import { Spinner } from "components/ui/spinner";
+import { Badge } from "components/ui/badge";
+import { Button } from "components/ui/button";
 
 const DOCS_URL = "https://mnee-ui.vercel.app/docs/components/spinner";
 
@@ -56,6 +58,50 @@ figma.connect(
       }),
     },
     example: ({ color }) => <Spinner size="lg" color={color} />,
+    links: [{ name: "Documentation", url: DOCS_URL }],
+  }
+);
+
+// ─── Badge spinner (component set 1202:731, named "Badge") ────────────────────
+figma.connect(
+  Badge,
+  "https://www.figma.com/design/qzjrgEgx4q7MAU9ypgwp48?node-id=1202-731",
+  {
+    props: {
+      variant: figma.enum("Type", {
+        Default:   "default",
+        Secondary: "secondary",
+        Outline:   "outline",
+      }),
+    },
+    example: ({ variant }) => (
+      <Badge variant={variant} icon={<Spinner size="sm" />}>
+        Syncing
+      </Badge>
+    ),
+    links: [{ name: "Documentation", url: DOCS_URL }],
+  }
+);
+
+// ─── Brik — loading button (component set 1202:699, named "Brik") ─────────────
+// Distinct from the regular Button component set (73:3681).
+// Shows Button in its loading/disabled state with an inline spinner.
+figma.connect(
+  Button,
+  "https://www.figma.com/design/qzjrgEgx4q7MAU9ypgwp48?node-id=1202-699",
+  {
+    props: {
+      variant: figma.enum("Type", {
+        Default:   "primary",
+        Secondary: "secondary",
+        Outline:   "outline",
+      }),
+    },
+    example: ({ variant }) => (
+      <Button variant={variant} loading>
+        Loading...
+      </Button>
+    ),
     links: [{ name: "Documentation", url: DOCS_URL }],
   }
 );
