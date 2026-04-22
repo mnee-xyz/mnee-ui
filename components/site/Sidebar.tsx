@@ -46,6 +46,7 @@ const navigation: Array<{
       { label: "AmountDisplay", href: "/docs/components/amount-display", status: "stable" as const },
       { label: "DropdownToken", href: "/docs/components/dropdown-token", status: "stable" as const },
       { label: "SelectList", href: "/docs/components/select-list", status: "stable" as const },
+      { label: "Spinner", href: "/docs/components/spinner", status: "stable" as const },
       { label: "DetailRow", href: "/docs/components/detail-row", status: "stable" as const },
       { label: "ConfirmCard", href: "/docs/components/confirm-card", status: "stable" as const },
       { label: "InputAddress", href: "/docs/components/input-address", status: "stable" as const },
