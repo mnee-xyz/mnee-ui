@@ -37,10 +37,19 @@ export function ConfirmCard({
       className={cn("rounded-xl border border-[#e5e5e5] overflow-hidden", className)}
       {...props}
     >
-      {/* Header — always shows real content */}
-      <div className="bg-[#f5f5f5] pt-3 px-4 pb-4">
-        <p className="text-sm text-[#737373]">{subtitle}</p>
-        <p className="text-[30px] leading-9 font-semibold text-gray-900">{amount}</p>
+      {/* Header */}
+      <div className={cn("bg-[#f5f5f5] pt-3 px-4 pb-4", isLoading && "animate-pulse")}>
+        {isLoading ? (
+          <>
+            <div className="h-3 w-28 rounded-full bg-[#e0e0e0] mb-3" />
+            <div className="h-8 w-36 rounded-lg bg-[#e0e0e0]" />
+          </>
+        ) : (
+          <>
+            <p className="text-sm text-[#737373]">{subtitle}</p>
+            <p className="text-[30px] leading-9 font-semibold text-gray-900">{amount}</p>
+          </>
+        )}
       </div>
 
       {/* Body */}
